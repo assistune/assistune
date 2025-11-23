@@ -97,3 +97,13 @@ html {
 .text-glow {
     text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
 }
+
+/* Yazı yazma efekti için imleç */
+.typing-effect::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
