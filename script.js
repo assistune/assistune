@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // n8n Webhook'a istek gönder
-                const response = await fetch('https://tasshake.app.n8n.cloud/webhook-test/contact', {
+                const response = await fetch('https://tasshake.app.n8n.cloud/webhook/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -89,3 +89,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
