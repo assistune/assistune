@@ -1,40 +1,50 @@
-// Sayfa tamamen yüklendiğinde çalışır
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* * MOBİL MENÜ MANTIĞI 
-     */
+    // --- MOBİL MENÜ ---
     const toggleBtn = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
     const menu = document.getElementById('navbar-sticky');
-    const navLinks = document.querySelectorAll('.nav-link'); // Menü içindeki linkler
-
+    
     if (toggleBtn && menu) {
-        // Menü açma/kapama butonu
         toggleBtn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
-
-        // Menüdeki bir linke tıklayınca menüyü kapat (Mobil için önemli)
-        navLinks.forEach(link => {
+        
+        // Linke tıklanınca menüyü kapat
+        menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (!menu.classList.contains('hidden')) {
-                    menu.classList.add('hidden');
-                }
+                menu.classList.add('hidden');
             });
         });
     }
 
-    /* * İLETİŞİM FORMU ve WEBHOOK ENTEGRASYONU
-     * Form verilerini alır ve n8n webhook'una JSON olarak gönderir.
-     */
+    // --- ACCORDION (SSS) ---
+    const accordions = document.querySelectorAll('.accordion-btn');
+    accordions.forEach(acc => {
+        acc.addEventListener('click', function() {
+            // Aktif durumu değiştir
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('i');
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-45'); // İkonu geri döndür
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-45'); // İkonu çarpı yap
+            }
+        });
+    });
+
+    // --- N8N FORM GÖNDERİMİ ---
     const form = document.getElementById('contactForm');
     const statusText = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
 
     if (form) {
         form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Sayfanın yenilenmesini engelle
+            e.preventDefault();
             
-            // Form verilerini al
             const formData = new FormData(form);
             const data = {
                 name: formData.get('name'),
@@ -42,52 +52,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 phone: formData.get('phone')
             };
 
-            // Butonu yükleniyor moduna al
+            // Loading Modu
             const originalBtnText = submitBtn.innerText;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Gönderiliyor...';
-            statusText.classList.add('hidden'); // Önceki mesajları gizle
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> GÖNDERİLİYOR...';
+            statusText.classList.add('hidden');
 
             try {
-                // n8n Webhook'a istek gönder
+                // Assistune Webhook URL
                 const response = await fetch('https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
                 if (response.ok) {
-                    // Başarılı
-                    statusText.innerHTML = '<i class="fa-solid fa-check-circle"></i> Teşekkürler! Bilgileriniz alındı. Size döneceğiz.';
-                    statusText.className = "text-center text-sm mt-4 text-brand-cyan block font-bold animate-pulse";
-                    form.reset(); // Formu temizle
+                    statusText.innerHTML = '<i class="fa-solid fa-check-circle"></i> Başarıyla gönderildi! En kısa sürede döneceğiz.';
+                    statusText.className = "text-center text-sm mt-4 text-brand-cyan block font-bold";
+                    form.reset();
                 } else {
-                    // Sunucu hatası
                     throw new Error('Sunucu hatası');
                 }
             } catch (error) {
-                // Bağlantı hatası
-                console.error('Hata:', error);
-                statusText.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Bir hata oluştu. Lütfen tekrar deneyin.';
-                statusText.className = "text-center text-sm mt-4 text-red-500 block font-bold";
+                console.error(error);
+                statusText.innerHTML = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+                statusText.className = "text-center text-sm mt-4 text-red-500 block";
             } finally {
-                // Butonu her durumda eski haline getir (biraz bekleyip)
                 setTimeout(() => {
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalBtnText;
-                    
-                    // Başarı mesajını 5 saniye sonra gizle
-                    if (statusText.classList.contains('text-brand-cyan')) {
-                        setTimeout(() => {
-                            statusText.classList.add('hidden');
-                        }, 5000);
-                    }
-                }, 1000);
+                }, 2000);
             }
         });
     }
 });
-
-
