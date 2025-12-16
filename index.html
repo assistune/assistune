@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistune | Yapay Zeka Otomasyon Ajansı</title>
-    <meta name="description" content="İşletmenizi yapay zeka ile otopilota alın. Mail, Chatbot ve Sesli Ajan çözümleri.">
+    <title>Assistune | Sağlık & Klinik Otomasyon Sistemleri</title>
+    <meta name="description" content="Klinikler için yapay zeka asistanı. Randevu, hasta takibi ve çağrı merkezi otomasyonu.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,6 @@
                     },
                     backgroundImage: {
                         'brand-gradient': 'linear-gradient(135deg, #7FE5FF 0%, #9225BC 100%)',
-                        'brand-gradient-hover': 'linear-gradient(135deg, #9225BC 0%, #7FE5FF 100%)',
                     }
                 }
             }
@@ -46,9 +45,9 @@
 
     <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 rounded bg-brand-gradient flex items-center justify-center font-heading font-black text-black text-xl">A</div>
-                <span class="self-center text-2xl font-heading font-bold tracking-tight text-white">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Assistune Logo" class="h-10 w-auto object-contain">
+                <span class="self-center text-2xl font-heading font-bold tracking-tight text-white hidden md:block">
                     assistune
                 </span>
             </a>
@@ -56,7 +55,7 @@
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <a href="#fiyat-al" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group bg-brand-gradient group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                     <span class="relative px-6 py-2.5 transition-all ease-in duration-75 bg-brand-dark rounded-md group-hover:bg-opacity-0">
-                        Fiyat Teklifi Alın
+                        Ücretsiz Analiz
                     </span>
                 </a>
                 <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100/10 focus:outline-none" aria-controls="navbar-sticky" aria-expanded="false">
@@ -67,31 +66,31 @@
 
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-white/10 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 bg-black/50 md:bg-transparent">
-                    <li><a href="#hizmetler" class="block py-2 px-3 text-gray-300 hover:text-brand-cyan transition-colors">Hizmetler</a></li>
-                    <li><a href="#mottolar" class="block py-2 px-3 text-gray-300 hover:text-brand-cyan transition-colors">Neden Biz?</a></li>
+                    <li><a href="#hizmetler" class="block py-2 px-3 text-gray-300 hover:text-brand-cyan transition-colors">Çözümler</a></li>
+                    <li><a href="#referanslar" class="block py-2 px-3 text-gray-300 hover:text-brand-cyan transition-colors">Referanslar</a></li>
                     <li><a href="#sss" class="block py-2 px-3 text-gray-300 hover:text-brand-cyan transition-colors">S.S.S</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 overflow-hidden">
+    <section class="relative pt-36 pb-20 lg:pt-48 overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-purple/30 blur-[120px] rounded-full -z-10"></div>
 
         <div class="max-w-screen-xl mx-auto px-4 text-center relative z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8 animate-fade-in-up">
                 <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-                <span class="text-xs font-medium text-gray-300 uppercase tracking-wider">Yapay Zeka Devrimi</span>
+                <span class="text-xs font-medium text-gray-300 uppercase tracking-wider">Klinikler İçin Yapay Zeka</span>
             </div>
             
             <h1 class="mb-6 text-5xl md:text-7xl font-heading font-bold tracking-tight text-white leading-[1.1]">
-                İşletmenizi<br>
-                <span class="text-transparent bg-clip-text bg-brand-gradient">Geleceğe Taşıyın</span>
+                Hasta Trafiğini Yönetin,<br>
+                <span class="text-transparent bg-clip-text bg-brand-gradient">Tedaviye Odaklanın.</span>
             </h1>
             
             <p class="mb-10 text-lg font-light text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Mail otomasyonu, chatbotlar ve sesli ajanlarla işletmenizi 7/24 çalışan bir makineye dönüştürüyoruz. Assistune ile rekabette haksız avantaj elde edin.
+                Sekreteriniz uyuyabilir ama Assistune uyumaz. Randevu oluşturma, hatırlatma ve hasta sorularını yanıtlama süreçlerini yapay zekaya devredin.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -99,46 +98,108 @@
                     Hemen Başlayın
                 </a>
                 <a href="#hizmetler" class="px-8 py-4 text-base font-medium text-white rounded-lg border border-white/10 hover:bg-white/5 transition-all">
-                    Hizmetleri İncele
+                    Demoyu İncele
                 </a>
             </div>
 
-            <div class="mt-16 relative mx-auto max-w-5xl rounded-xl border border-white/10 bg-brand-surface/50 backdrop-blur-xl shadow-2xl overflow-hidden p-2">
+             <div class="mt-16 relative mx-auto max-w-5xl rounded-xl border border-white/10 bg-brand-surface/50 backdrop-blur-xl shadow-2xl overflow-hidden p-2">
                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-brand-dark/90 z-10"></div>
-                <img src="https://images.unsplash.com/photo-1642132652859-3ef5a9290aa8?q=80&w=2070&auto=format&fit=crop" alt="Dashboard" class="rounded-lg w-full opacity-60">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop" alt="Dashboard" class="rounded-lg w-full opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
                 
                 <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-[90%] md:w-[600px] glass-card p-6 rounded-xl flex items-center justify-between border-l-4 border-l-brand-cyan">
                     <div>
-                        <p class="text-gray-400 text-sm">Aylık Otomatik Yanıt</p>
-                        <p class="text-3xl font-bold text-white">12,450+</p>
+                        <p class="text-gray-400 text-sm">Onaylanan Randevu</p>
+                        <p class="text-3xl font-bold text-white">142</p>
                     </div>
                     <div>
-                        <p class="text-gray-400 text-sm">Tasarruf Edilen Saat</p>
-                        <p class="text-3xl font-bold text-brand-cyan">840s</p>
+                        <p class="text-gray-400 text-sm">Engellenen Kayıp Çağrı</p>
+                        <p class="text-3xl font-bold text-brand-cyan">%98</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-12 border-y border-white/5 bg-black/50">
-        <div class="max-w-screen-md mx-auto px-4 text-center">
-            <div class="flex justify-center mb-4">
-                <div class="flex text-brand-cyan gap-1">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
+    <section id="referanslar" class="py-20 border-y border-white/5 bg-black/50 relative">
+        <div class="max-w-screen-lg mx-auto px-4 relative">
+            
+            <div class="text-center mb-10">
+                <h3 class="text-brand-cyan font-bold tracking-wider text-sm uppercase">Başarı Hikayeleri</h3>
             </div>
-            <blockquote class="text-xl md:text-2xl font-medium text-white mb-6">
-                "Assistune'yi kullanmaya başladığımızdan beri operasyonel yükümüz inanılmaz azaldı. Ciromuz diğer aylara göre hemen fark etti, müşteri memnuniyeti tavan yaptı."
-            </blockquote>
-            <div class="flex items-center justify-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400">
-                    <i class="fa-solid fa-user-secret"></i>
+
+            <div class="relative overflow-hidden min-h-[250px] flex items-center justify-center">
+                
+                <button id="prevBtn" class="absolute left-0 z-20 p-3 rounded-full bg-white/5 hover:bg-brand-cyan hover:text-black transition-all border border-white/10 text-white">
+                    <i class="fa-solid fa-chevron-left text-xl"></i>
+                </button>
+
+                <div class="testimonial-slide active w-full transition-opacity duration-500 text-center px-12">
+                    <div class="flex justify-center mb-4 text-brand-cyan gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote class="text-xl md:text-2xl font-medium text-white mb-6 leading-relaxed">
+                        "Assistune'yi kliniğimize entegre ettiğimizden beri telefon trafiği bitti. Asistanım artık sadece hastalarla ilgileniyor, randevular kendi kendine doluyor."
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <div class="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan mb-2">
+                            <i class="fa-solid fa-user-doctor text-xl"></i>
+                        </div>
+                        <div class="font-bold text-white text-lg">Dt. Elif Yılmaz</div>
+                        <div class="text-sm text-gray-500">Ağız ve Diş Sağlığı Polikliniği</div>
+                    </div>
                 </div>
-                <div class="text-left">
-                    <div class="font-bold text-white">Anonim İşletme</div>
-                    <div class="text-sm text-gray-500">E-Ticaret Sektörü</div>
+
+                <div class="testimonial-slide hidden w-full transition-opacity duration-500 text-center px-12">
+                    <div class="flex justify-center mb-4 text-brand-cyan gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote class="text-xl md:text-2xl font-medium text-white mb-6 leading-relaxed">
+                        "Gece 03:00'te 'Fiyat bilgisi alabilir miyim?' diye soran hastaya anında cevap verip randevu oluşturan bir sistem. Ciromuz %40 arttı."
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <div class="w-12 h-12 rounded-full bg-brand-purple/20 flex items-center justify-center text-brand-purple mb-2">
+                            <i class="fa-solid fa-stethoscope text-xl"></i>
+                        </div>
+                        <div class="font-bold text-white text-lg">Op. Dr. Kaan Demir</div>
+                        <div class="text-sm text-gray-500">Estetik Cerrahi Uzmanı</div>
+                    </div>
                 </div>
+
+                <div class="testimonial-slide hidden w-full transition-opacity duration-500 text-center px-12">
+                    <div class="flex justify-center mb-4 text-brand-cyan gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote class="text-xl md:text-2xl font-medium text-white mb-6 leading-relaxed">
+                        "Danışan takibi ve diyet listesi hatırlatmaları için mail otomasyonunu kullanıyoruz. Artık kimse 'Listemi unuttum' demiyor."
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mb-2">
+                            <i class="fa-solid fa-carrot text-xl"></i>
+                        </div>
+                        <div class="font-bold text-white text-lg">Dyt. Selin Arslan</div>
+                        <div class="text-sm text-gray-500">Beslenme ve Diyet Merkezi</div>
+                    </div>
+                </div>
+
+                 <div class="testimonial-slide hidden w-full transition-opacity duration-500 text-center px-12">
+                    <div class="flex justify-center mb-4 text-brand-cyan gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote class="text-xl md:text-2xl font-medium text-white mb-6 leading-relaxed">
+                        "Fizik tedavi seanslarını organize etmek kabustu. Assistune sesli asistanı hastaları arayıp teyit alıyor, gelmeyen neredeyse kalmadı."
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mb-2">
+                            <i class="fa-solid fa-user-nurse text-xl"></i>
+                        </div>
+                        <div class="font-bold text-white text-lg">Fzt. Mert Kaya</div>
+                        <div class="text-sm text-gray-500">Fizik Tedavi Merkezi</div>
+                    </div>
+                </div>
+
+                <button id="nextBtn" class="absolute right-0 z-20 p-3 rounded-full bg-white/5 hover:bg-brand-cyan hover:text-black transition-all border border-white/10 text-white">
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -159,23 +220,28 @@
                     <p class="text-lg font-bold text-white leading-snug">"Sekreteriniz Uyur, Assistune Uyumaz. İşletmeniz 7/24 Açık Kalsın."</p>
                     <div class="mt-4 w-8 h-1 bg-brand-purple group-hover:w-full transition-all duration-500"></div>
                 </div>
-                <div class="bento-card group lg:col-span-2 bg-gradient-to-br from-brand-surface to-brand-dark border border-brand-cyan/20">
-                    <p class="text-2xl font-bold text-transparent bg-clip-text bg-brand-gradient leading-snug">"Rakipleriniz Sabah Mesaiye Başlarken, Siz Gece Boyu Topladığınız Randevularla Güne Başlayın."</p>
+                <div class="bento-card group">
+                    <p class="text-lg font-bold text-white leading-snug">"Rakipleriniz Sabah Mesaiye Başlarken, Siz Gece Boyu Topladığınız Randevularla Güne Başlayın."</p>
+                    <div class="mt-4 w-8 h-1 bg-brand-cyan group-hover:w-full transition-all duration-500"></div>
                 </div>
                 <div class="bento-card group">
                     <p class="text-lg font-bold text-white leading-snug">"Aynı Sorulara 100 Kez Cevap Vermekten Yorulmadınız mı? Bırakın, Yapay Zeka Sizin Sesinizle Anlatsın."</p>
-                    <div class="mt-4 w-8 h-1 bg-brand-cyan group-hover:w-full transition-all duration-500"></div>
-                </div>
-                <div class="bento-card group">
-                    <p class="text-lg font-bold text-white leading-snug">"Personel Masrafı Yok, Mola Yok, Hata Yok. Müşteri İlişkilerinde Yapay Zeka Devrimi."</p>
                     <div class="mt-4 w-8 h-1 bg-brand-purple group-hover:w-full transition-all duration-500"></div>
                 </div>
                 <div class="bento-card group">
-                    <p class="text-lg font-bold text-white leading-snug">"Sadece 'Bilgi Verip' Kapatmaz. İkna Eder, Randevuyu Alır, Takviminize İşler."</p>
+                    <p class="text-lg font-bold text-white leading-snug">"Personel Masrafı Yok, Mola Yok, Hata Yok. Müşteri İlişkilerinde Yapay Zeka Devrimi."</p>
                     <div class="mt-4 w-8 h-1 bg-brand-cyan group-hover:w-full transition-all duration-500"></div>
                 </div>
                 <div class="bento-card group">
+                    <p class="text-lg font-bold text-white leading-snug">"Sadece 'Bilgi Verip' Kapatmaz. İkna Eder, Randevuyu Alır, Takviminize İşler."</p>
+                    <div class="mt-4 w-8 h-1 bg-brand-purple group-hover:w-full transition-all duration-500"></div>
+                </div>
+                <div class="bento-card group">
                     <p class="text-lg font-bold text-white leading-snug">"İşletme Kültürünüzü Kodlara İşledik. Sizi En Az Sizin Kadar İyi Anlatan Bir Teknoloji."</p>
+                    <div class="mt-4 w-8 h-1 bg-brand-cyan group-hover:w-full transition-all duration-500"></div>
+                </div>
+                <div class="bento-card group">
+                    <p class="text-lg font-bold text-white leading-snug">"Sıradan Olanla Vakit Kaybetmiyoruz. İşletmesini Zirveye Taşımaya Hazır Olanları Bekliyoruz."</p>
                     <div class="mt-4 w-8 h-1 bg-brand-purple group-hover:w-full transition-all duration-500"></div>
                 </div>
             </div>
@@ -189,108 +255,13 @@
             <div class="space-y-4">
                 <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
                     <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-medium text-white">Kurulum ne kadar sürer?</span>
+                        <span class="font-medium text-white">Hasta verileri ve KVKK güvenliği nasıl sağlanıyor?</span>
                         <i class="fa-solid fa-plus text-brand-cyan transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
                         <div class="px-6 pb-4 text-gray-400">
-                            İşletmenizin ihtiyaç analizine bağlı olarak, sistemlerin entegrasyonu ve testi genellikle 3 ila 7 iş günü arasında tamamlanır.
+                            Tüm sistemlerimiz KVKK uyumludur. Hasta verileri uçtan uca şifrelenir ve 3. şahıslarla asla paylaşılmaz. Sistem sadece belirlenen senaryolar dahilinde cevap verir.
                         </div>
                     </div>
                 </div>
-                <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-medium text-white">Mevcut CRM sistemimle çalışır mı?</span>
-                        <i class="fa-solid fa-plus text-brand-cyan transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-4 text-gray-400">
-                            Evet, Assistune çözümleri popüler CRM ve veritabanı sistemleri (HubSpot, Salesforce, Google Sheets vb.) ile sorunsuz entegre olacak şekilde tasarlanmıştır.
-                        </div>
-                    </div>
-                </div>
-                <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-medium text-white">Sesli ajanlar Türkçe konuşabiliyor mu?</span>
-                        <i class="fa-solid fa-plus text-brand-cyan transition-transform duration-300"></i>
-                    </button>
-                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-4 text-gray-400">
-                            Kesinlikle. Gelişmiş dil modellerimiz sayesinde sesli ajanlarımız doğal, akıcı ve aksansız Türkçe konuşarak müşterilerinizle iletişim kurar.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="fiyat-al" class="py-24 relative overflow-hidden">
-        <div class="absolute right-0 bottom-0 w-[500px] h-[500px] bg-brand-cyan/10 blur-[100px] rounded-full"></div>
-
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <div class="glass-card p-1 md:p-1 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10">
-                <div class="bg-brand-dark rounded-xl p-8 md:p-12 overflow-hidden relative">
-                    
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-                                İşletmenizi Büyütmeye <br>
-                                <span class="text-transparent bg-clip-text bg-brand-gradient">Hazır mısınız?</span>
-                            </h2>
-                            <p class="text-gray-400 mb-8">
-                                Formu doldurun, size özel otomasyon stratejisi ve fiyat teklifi ile geri dönüş yapalım.
-                            </p>
-                            
-                            <ul class="space-y-4 mb-8">
-                                <li class="flex items-center gap-3 text-gray-300">
-                                    <i class="fa-solid fa-check-circle text-brand-purple"></i> Ücretsiz Analiz
-                                </li>
-                                <li class="flex items-center gap-3 text-gray-300">
-                                    <i class="fa-solid fa-check-circle text-brand-purple"></i> Hızlı Entegrasyon
-                                </li>
-                                <li class="flex items-center gap-3 text-gray-300">
-                                    <i class="fa-solid fa-check-circle text-brand-purple"></i> 7/24 Destek
-                                </li>
-                            </ul>
-                        </div>
-
-                        <form id="contactForm" class="space-y-5">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Ad Soyad</label>
-                                <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all placeholder-gray-700" placeholder="Adınız">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">E-posta</label>
-                                <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all placeholder-gray-700" placeholder="sirket@mail.com">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Telefon</label>
-                                <input type="tel" name="phone" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all placeholder-gray-700" placeholder="0555 ...">
-                            </div>
-                            <button type="submit" id="submitBtn" class="w-full bg-brand-gradient text-white font-bold py-4 rounded-lg hover:opacity-90 transition-all shadow-lg transform hover:-translate-y-1">
-                                TEKLİF ALIN
-                            </button>
-                            <p id="formStatus" class="text-center text-sm hidden"></p>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-white/10 bg-black py-12 text-center">
-        <div class="flex items-center justify-center gap-2 mb-4 opacity-50 hover:opacity-100 transition-opacity">
-            <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-cyan to-brand-purple flex items-center justify-center text-black text-xs font-bold">A</div>
-            <span class="text-xl font-heading font-bold text-white">assistune</span>
-        </div>
-        <p class="text-gray-600 text-sm">© 2024 Assistune AI Automation. Tüm hakları saklıdır.</p>
-        <div class="flex justify-center gap-6 mt-6">
-            <a href="https://instagram.com/assistune" class="text-gray-500 hover:text-brand-purple transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-            <a href="mailto:info@assistune.com" class="text-gray-500 hover:text-brand-cyan transition-colors"><i class="fa-solid fa-envelope text-xl"></i></a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <div class="border border-white/10 rounded-lg bg
