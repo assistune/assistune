@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+        
+        // Linke tıklanınca menüyü kapat
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
@@ -19,52 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const accordions = document.querySelectorAll('.accordion-btn');
     accordions.forEach(acc => {
         acc.addEventListener('click', function() {
+            // Aktif durumu değiştir
             this.classList.toggle('active');
             const content = this.nextElementSibling;
             const icon = this.querySelector('i');
 
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
-                icon.classList.remove('rotate-45');
+                icon.classList.remove('rotate-45'); // İkonu geri döndür
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-                icon.classList.add('rotate-45');
+                icon.classList.add('rotate-45'); // İkonu çarpı yap
             }
         });
     });
-
-    // --- TESTIMONIAL SLIDER (YENİ EKLENDİ) ---
-    const slides = document.querySelectorAll('.testimonial-slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-        // Tüm slaytları gizle
-        slides.forEach(slide => {
-            slide.classList.add('hidden');
-            slide.classList.remove('active'); // CSS animasyonu için
-        });
-        
-        // İstenen slaytı göster
-        slides[index].classList.remove('hidden');
-        // Kısa bir gecikme ile opacity'yi tetikle (fade efekti için)
-        setTimeout(() => {
-            slides[index].classList.add('active');
-        }, 10);
-    }
-
-    if(prevBtn && nextBtn && slides.length > 0) {
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length; // Döngüsel geçiş
-            showSlide(currentSlide);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Geriye döngüsel
-            showSlide(currentSlide);
-        });
-    }
 
     // --- N8N FORM GÖNDERİMİ ---
     const form = document.getElementById('contactForm');
@@ -82,12 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 phone: formData.get('phone')
             };
 
+            // Loading Modu
             const originalBtnText = submitBtn.innerText;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> GÖNDERİLİYOR...';
             statusText.classList.add('hidden');
 
             try {
+                // Assistune Webhook URL
                 const response = await fetch('https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -95,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    statusText.innerHTML = '<i class="fa-solid fa-check-circle"></i> Başvurunuz alındı! Hızla dönüş yapacağız.';
+                    statusText.innerHTML = '<i class="fa-solid fa-check-circle"></i> Başarıyla gönderildi! En kısa sürede döneceğiz.';
                     statusText.className = "text-center text-sm mt-4 text-brand-cyan block font-bold";
                     form.reset();
                 } else {
