@@ -21,18 +21,18 @@ body {
     background: linear-gradient(#7FE5FF, #9225BC);
 }
 
-/* Grid Background Pattern (Referans Fotoğraf 2 Tarzı) */
+/* Grid Background */
 .bg-dark-grid {
     background-color: #050505;
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px; /* Kare boyutu */
+    background-size: 50px 50px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Bento Cards (Motto Kartları) */
+/* Bento Cards */
 .bento-card {
     background: #0A0A0A;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -71,4 +71,16 @@ body {
 
 .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Slider Animation (Yeni) */
+.testimonial-slide {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    transform: translateY(0);
 }
