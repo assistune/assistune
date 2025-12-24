@@ -1,88 +1,76 @@
+// Sayfa yüklendiğinde çalışacak fonksiyonlar
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- MOBİL MENÜ ---
-    const toggleBtn = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
-    const menu = document.getElementById('navbar-sticky');
-    
-    if (toggleBtn && menu) {
-        toggleBtn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-        
-        // Linke tıklanınca menüyü kapat
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    }
-
-    // --- ACCORDION (SSS) ---
-    const accordions = document.querySelectorAll('.accordion-btn');
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            // Aktif durumu değiştir
-            this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            const icon = this.querySelector('i');
-
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                icon.classList.remove('rotate-45'); // İkonu geri döndür
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.classList.add('rotate-45'); // İkonu çarpı yap
-            }
-        });
-    });
-
-    // --- N8N FORM GÖNDERİMİ ---
-    const form = document.getElementById('contactForm');
-    const statusText = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone')
-            };
-
-            // Loading Modu
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> GÖNDERİLİYOR...';
-            statusText.classList.add('hidden');
-
-            try {
-                // Assistune Webhook URL
-                const response = await fetch('https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    statusText.innerHTML = '<i class="fa-solid fa-check-circle"></i> Başarıyla gönderildi! En kısa sürede döneceğiz.';
-                    statusText.className = "text-center text-sm mt-4 text-brand-cyan block font-bold";
-                    form.reset();
-                } else {
-                    throw new Error('Sunucu hatası');
-                }
-            } catch (error) {
-                console.error(error);
-                statusText.innerHTML = 'Bir hata oluştu. Lütfen tekrar deneyin.';
-                statusText.className = "text-center text-sm mt-4 text-red-500 block";
-            } finally {
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnText;
-                }, 2000);
-            }
-        });
-    }
+    initROI();
+    initTabs();
 });
+
+// 1. ROI (Tasarruf) Hesaplayıcı Mantığı
+function initROI() {
+    const missedCallsInput = document.getElementById('missedCalls');
+    const minsPerCallInput = document.getElementById('minsPerCall');
+    const roiResultDisplay = document.getElementById('roiResult');
+
+    const calculate = () => {
+        const calls = parseFloat(missedCallsInput.value) || 0;
+        const mins = parseFloat(minsPerCallInput.value) || 0;
+        
+        // Formül: (Günlük Çağrı * 30 Gün * Çağrı Başı Süre) / 60 Dakika
+        const monthlyHoursSaved = Math.round((calls * 30 * mins) / 60);
+        
+        // Sonucu ekrana yazdır
+        roiResultDisplay.innerText = monthlyHoursSaved;
+    };
+
+    // Input değiştikçe hesapla
+    missedCallsInput.addEventListener('input', calculate);
+    minsPerCallInput.addEventListener('input', calculate);
+    
+    // İlk hesaplamayı yap
+    calculate();
+}
+
+// 2. Karanlık Mod (Dark Mode) Yönetimi
+function toggleDarkMode() {
+    const htmlElement = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        themeIcon.innerText = '☀️';
+        localStorage.setItem('theme', 'light');
+    } else {
+        htmlElement.classList.add('dark');
+        themeIcon.innerText = '🌙';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// 3. Sektörel Senaryo Seçici (Tabs)
+const sectorData = {
+    klinik: "Hastaların randevularını 7/24 düzenleyin, tedavi sonrası takip mesajlarını otomatize edin.",
+    eticaret: "Sepette ürün bırakan müşterilere özel indirimler sunun ve kargo sorgularını anında yanıtlayın.",
+    hizmet: "Teklif süreçlerini hızlandırın, saha ekiplerinizin takvimini AI ile koordine edin."
+};
+
+function showTab(type) {
+    const contentArea = document.getElementById('tabContent');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    // Metni değiştir
+    contentArea.style.opacity = 0;
+    setTimeout(() => {
+        contentArea.innerText = sectorData[type];
+        contentArea.style.opacity = 1;
+    }, 150);
+
+    // Aktif buton stilini güncelle
+    buttons.forEach(btn => {
+        if (btn.getAttribute('data-tab') === type) {
+            btn.classList.add('gradient-bg', 'text-white');
+            btn.classList.remove('border-slate-300', 'dark:border-slate-700');
+        } else {
+            btn.classList.remove('gradient-bg', 'text-white');
+            btn.classList.add('border-slate-300', 'dark:border-slate-700');
+        }
+    });
+}
