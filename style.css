@@ -1,4 +1,6 @@
-/* Temel Ayarlar */
+/* Google Fonts Import - Hataları önlemek için en başa ekle */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 :root {
     --primary-color: #2563eb;
     --dark-bg: #0f172a;
@@ -7,6 +9,7 @@
     --transition: all 0.3s ease;
 }
 
+/* Sayfa Sıfırlama */
 * {
     margin: 0;
     padding: 0;
@@ -18,14 +21,15 @@ body {
     background-color: #f1f5f9;
     color: #1e293b;
     line-height: 1.6;
+    overflow-x: hidden; /* Taşmaları önler */
 }
 
-/* Navbar */
+/* Navigasyon - Hatalı hizalama düzeltildi */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 10%;
+    padding: 1rem 5%;
     background: var(--dark-bg);
     color: white;
     position: sticky;
@@ -36,13 +40,12 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 20px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
     transition: var(--transition);
 }
 
@@ -50,63 +53,55 @@ body {
     color: var(--primary-color);
 }
 
-/* Hero Bölümü */
+/* Hero Bölümü - Görselin tam oturması için */
 .hero {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
-                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80') no-repeat center/cover;
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80') no-repeat center center/cover;
     color: white;
-    padding: 0 20px;
+    padding: 2rem;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Mobil uyumlu font boyutu */
     margin-bottom: 1rem;
 }
 
-.primary-btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-top: 2rem;
-}
-
-.primary-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-}
-
-/* Özellikler Kartları */
+/* Kartlar - Grid yapısı düzeltildi */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 5rem 10%;
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .feature-card {
     background: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 15px;
+    padding: 2rem;
+    border-radius: 12px;
     text-align: center;
     transition: var(--transition);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.feature-card .icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+/* Mobil Uyumluluk (Responsive) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Mobilde menü için JS gerekebilir veya alta alınabilir */
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
 }
