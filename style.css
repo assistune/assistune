@@ -1,74 +1,56 @@
-/* Font Ayarları */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;900&display=swap');
+/* Google Fonts Entegrasyonu */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(90deg, #7FE5FF 0%, #9625BC 100%);
+}
 
 body {
-    background-color: #030303;
-    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #030303;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(#7FE5FF, #9225BC);
+/* Başlıklar ve Vurgulu Metinler İçin Gradyan */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
-/* Grid Background Pattern (Referans Fotoğraf 2 Tarzı) */
-.bg-dark-grid {
-    background-color: #050505;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px; /* Kare boyutu */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* Butonlar ve Arka Planlar İçin Gradyan */
+.gradient-bg {
+    background: var(--primary-gradient);
 }
 
-/* Bento Cards (Motto Kartları) */
-.bento-card {
-    background: #0A0A0A;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
+/* Boş Görsel Alanları (Placeholder) */
+.placeholder-box {
+    background: rgba(128, 128, 128, 0.1);
+    border: 2px dashed rgba(128, 128, 128, 0.3);
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    min-height: 320px;
     transition: all 0.3s ease;
-    min-height: 200px;
 }
 
-.bento-card:hover {
-    border-color: rgba(127, 229, 255, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-    background: #0F0F0F;
+.dark .placeholder-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Glass Effect */
-.glass-card {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
+/* Manuel Randevu Butonu Animasyonu */
+@keyframes pulse-green {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.animate-pulse-custom {
+    animation: pulse-green 2s infinite;
 }
 
-.animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+/* Yumuşak Geçişler */
+.tab-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
