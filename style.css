@@ -1,56 +1,112 @@
-/* Google Fonts Entegrasyonu */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
+/* Temel Ayarlar */
 :root {
-    --primary-gradient: linear-gradient(90deg, #7FE5FF 0%, #9625BC 100%);
+    --primary-color: #2563eb;
+    --dark-bg: #0f172a;
+    --text-light: #f8fafc;
+    --card-bg: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
 }
 
-/* Başlıklar ve Vurgulu Metinler İçin Gradyan */
-.gradient-text {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%;
+    background: var(--dark-bg);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Butonlar ve Arka Planlar İçin Gradyan */
-.gradient-bg {
-    background: var(--primary-gradient);
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
 }
 
-/* Boş Görsel Alanları (Placeholder) */
-.placeholder-box {
-    background: rgba(128, 128, 128, 0.1);
-    border: 2px dashed rgba(128, 128, 128, 0.3);
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Bölümü */
+.hero {
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 320px;
-    transition: all 0.3s ease;
+    text-align: center;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80') no-repeat center/cover;
+    color: white;
+    padding: 0 20px;
 }
 
-.dark .placeholder-box {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Manuel Randevu Butonu Animasyonu */
-@keyframes pulse-green {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+.primary-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 2rem;
 }
 
-.animate-pulse-custom {
-    animation: pulse-green 2s infinite;
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
 }
 
-/* Yumuşak Geçişler */
-.tab-btn {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Özellikler Kartları */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 5rem 10%;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
 }
