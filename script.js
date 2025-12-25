@@ -1,15 +1,19 @@
-// Sayfa yüklendiğinde çalışacak fonksiyonlar
+// Sayfa yüklendiğinde tüm sistemleri başlatan ana fonksiyon
 document.addEventListener('DOMContentLoaded', () => {
-    initROI();
-    initTabs();
+    initCalculator();
+    // initTabs() fonksiyonu eğer aşağıda tanımlı değilse hata vermemesi için kontrol ekledik
+    if (typeof initTabs === "function") initTabs(); 
 });
 
-// Kayıp Müşteri Hesaplayıcı Mantığı
+// 1. Kayıp Müşteri Hesaplayıcı Mantığı
 function initCalculator() {
     const dailyTotalInput = document.getElementById('dailyTotal');
     const dailyMissedDisplay = document.getElementById('dailyMissed');
     const monthlyMissedDisplay = document.getElementById('monthlyMissed');
     const yearlyMissedDisplay = document.getElementById('yearlyMissed');
+
+    // Eğer sayfada bu ID'ler yoksa fonksiyonu durdur (Hata almamak için)
+    if (!dailyTotalInput || !dailyMissedDisplay) return;
 
     const MISSED_RATIO = 0.30; // %30 Kaçırma Oranı
 
@@ -21,21 +25,18 @@ function initCalculator() {
         const monthlyMissed = dailyMissed * 30;
         const yearlyMissed = dailyMissed * 365;
 
-        // Sonuçları Ekrana Yazdır (Noktalı format ile: 1.250 gibi)
+        // Sonuçları Ekrana Yazdır
         dailyMissedDisplay.innerText = dailyMissed.toLocaleString('tr-TR');
         monthlyMissedDisplay.innerText = monthlyMissed.toLocaleString('tr-TR');
         yearlyMissedDisplay.innerText = yearlyMissed.toLocaleString('tr-TR');
     };
 
-    // Giriş değiştikçe hesapla
+    // Kullanıcı sayı girdikçe hesapla
     dailyTotalInput.addEventListener('input', calculate);
     
-    // İlk açılışta çalıştır
+    // Sayfa açıldığında ilk hesaplamayı yap
     calculate();
 }
-
-// Sayfa yüklendiğinde başlat
-document.addEventListener('DOMContentLoaded', initCalculator);
 
 // 2. Karanlık Mod (Dark Mode) Yönetimi
 function toggleDarkMode() {
@@ -64,7 +65,9 @@ function showTab(type) {
     const contentArea = document.getElementById('tabContent');
     const buttons = document.querySelectorAll('.tab-btn');
 
-    // Metni değiştir
+    if(!contentArea) return;
+
+    // Metni yumuşak geçişle değiştir
     contentArea.style.opacity = 0;
     setTimeout(() => {
         contentArea.innerText = sectorData[type];
@@ -82,4 +85,3 @@ function showTab(type) {
         }
     });
 }
-
