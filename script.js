@@ -4,30 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs();
 });
 
-// 1. ROI (Tasarruf) Hesaplayıcı Mantığı
-function initROI() {
-    const missedCallsInput = document.getElementById('missedCalls');
-    const minsPerCallInput = document.getElementById('minsPerCall');
-    const roiResultDisplay = document.getElementById('roiResult');
+// Kayıp Müşteri Hesaplayıcı Mantığı
+function initCalculator() {
+    const dailyTotalInput = document.getElementById('dailyTotal');
+    const dailyMissedDisplay = document.getElementById('dailyMissed');
+    const monthlyMissedDisplay = document.getElementById('monthlyMissed');
+    const yearlyMissedDisplay = document.getElementById('yearlyMissed');
+
+    const MISSED_RATIO = 0.30; // %30 Kaçırma Oranı
 
     const calculate = () => {
-        const calls = parseFloat(missedCallsInput.value) || 0;
-        const mins = parseFloat(minsPerCallInput.value) || 0;
+        const total = parseFloat(dailyTotalInput.value) || 0;
         
-        // Formül: (Günlük Çağrı * 30 Gün * Çağrı Başı Süre) / 60 Dakika
-        const monthlyHoursSaved = Math.round((calls * 30 * mins) / 60);
-        
-        // Sonucu ekrana yazdır
-        roiResultDisplay.innerText = monthlyHoursSaved;
+        // Matematiksel Hesaplamalar
+        const dailyMissed = Math.round(total * MISSED_RATIO);
+        const monthlyMissed = dailyMissed * 30;
+        const yearlyMissed = dailyMissed * 365;
+
+        // Sonuçları Ekrana Yazdır (Noktalı format ile: 1.250 gibi)
+        dailyMissedDisplay.innerText = dailyMissed.toLocaleString('tr-TR');
+        monthlyMissedDisplay.innerText = monthlyMissed.toLocaleString('tr-TR');
+        yearlyMissedDisplay.innerText = yearlyMissed.toLocaleString('tr-TR');
     };
 
-    // Input değiştikçe hesapla
-    missedCallsInput.addEventListener('input', calculate);
-    minsPerCallInput.addEventListener('input', calculate);
+    // Giriş değiştikçe hesapla
+    dailyTotalInput.addEventListener('input', calculate);
     
-    // İlk hesaplamayı yap
+    // İlk açılışta çalıştır
     calculate();
 }
+
+// Sayfa yüklendiğinde başlat
+document.addEventListener('DOMContentLoaded', initCalculator);
 
 // 2. Karanlık Mod (Dark Mode) Yönetimi
 function toggleDarkMode() {
@@ -74,3 +82,4 @@ function showTab(type) {
         }
     });
 }
+
