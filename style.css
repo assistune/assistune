@@ -1,3 +1,4 @@
+/* --- CSS VARIABLES & DEFAULTS --- */
 :root {
     --brand-primary: #7FE5FF;
     --brand-secondary: #9625BC;
@@ -9,6 +10,7 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* --- GRADIENTS --- */
 .gradient-text {
     background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
     -webkit-background-clip: text;
@@ -20,42 +22,19 @@ body {
     background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
 }
 
+/* --- GLASSMORPHISM --- */
 .glass-card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
-
 .dark .glass-card {
     background: rgba(15, 23, 42, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Visual Progress Bar */
-.progress-bar-inner {
-    transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
-
-/* Custom Range Slider */
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: var(--brand-secondary);
-    cursor: pointer;
-    border: 2px solid white;
-}
-
-#notification {
-    transform: translateY(100px);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-#notification.show { transform: translateY(0); }
-
-/* Infinite Marquee Animation */
+/* --- ANIMATIONS --- */
 @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -78,29 +57,51 @@ input[type=range]::-webkit-slider-thumb {
     animation-play-state: paused;
 }
 
-/* FAQ Accordion Styles */
+/* --- UI ELEMENTS --- */
+.progress-bar-inner {
+    transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--brand-secondary);
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+#notification {
+    transform: translateY(100px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#notification.show { transform: translateY(0); }
+
+/* --- FAQ ACCORDION --- */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
 }
-
 .faq-item.active .faq-answer {
     max-height: 500px;
     opacity: 1;
     padding-bottom: 1.5rem;
 }
-
 .faq-item.active .faq-icon {
     transform: rotate(180deg);
 }
 
-/* Custom Scrollbar for Chat Preview */
+/* --- CUSTOM SCROLLBAR --- */
 .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
 }
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(150, 37, 188, 0.2);
+    background: rgba(127, 229, 255, 0.2);
     border-radius: 10px;
 }
