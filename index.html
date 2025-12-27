@@ -1,309 +1,366 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assistune | Yapay Zeka Otomasyon Ajansı</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        .gradient-text {
-            background: linear-gradient(90deg, #7FE5FF 0%, #9625BC 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-bg {
-            background: linear-gradient(90deg, #7FE5FF 0%, #9625BC 100%);
-        }
-        .placeholder-box {
-            background: rgba(128, 128, 128, 0.1);
-            border: 2px dashed rgba(128, 128, 128, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-        }
-        .dark .placeholder-box { background: rgba(255, 255, 255, 0.05); }
-    </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-white transition-colors duration-300">
+<body class="bg-bg-light text-slate-800 dark:bg-bg-dark dark:text-slate-300">
 
-    <nav class="fixed w-full z-50 top-0 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 font-bold text-2xl tracking-tighter gradient-text">ASSISTUNE</div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#hizmetler" class="hover:text-[#7FE5FF] transition">Hizmetler</a>
-                    <a href="#hesaplayici" class="hover:text-[#7FE5FF] transition">Hesaplayıcı</a>
-                    <a href="#panel" class="hover:text-[#7FE5FF] transition">Panel</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800">
-                        <span id="theme-icon">🌙</span>
-                    </button>
-                </div>
+    <div id="notification" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[200] px-6 py-3 rounded-2xl glass-card dark:text-white font-medium shadow-2xl">
+        <span id="notif-msg">✅ İşlem Başarılı!</span>
+    </div>
+
+    <nav class="fixed w-full z-[100] top-0 border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-bg-dark/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white">
+                ASSISTUNE<span class="text-brand-purple">.</span>
+            </div>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#hizmetler" class="hover:text-brand-purple transition-colors">Çözümler</a>
+                <a href="#analiz" class="hover:text-brand-purple transition-colors">Kayıp Analizi</a>
+                <a href="#faq" class="hover:text-brand-purple transition-colors">SSS</a>
+                <a href="#pricing" class="hover:text-brand-purple transition-colors">Fiyatlandırma</a>
+                <button onclick="toggleDarkMode()" class="p-2.5 bg-slate-100 dark:bg-white/5 rounded-xl hover:scale-110 transition-all">
+                    <span id="theme-icon" class="text-lg">🌙</span>
+                </button>
+                <a href="#contact" class="gradient-bg text-white px-7 py-2.5 rounded-full font-bold hover:opacity-90 transition-all">Danışmanlık Al</a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">
-                İşletmenizi Yapay Zeka ile Otomatize Edin, 7/24 Büyümeye Devam Edin.
+    <section class="relative pt-48 pb-10 px-6 overflow-hidden">
+        <div class="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-cyan/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                Operasyonlarınızı <br><span class="gradient-text">Yapay Zeka</span> ile Yönetin.
             </h1>
-            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10">
-                Sesli AI ajanları ve akıllı chatbotlar ile tüm kanallardan gelen randevuları tek merkezde yönetin.
+            <p class="text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                İnsan hatasını sıfırlayan, 7/24 randevu alan ve satış kanallarınızı tek merkezden yöneten yeni nesil otomasyon dünyasına hoş geldiniz.
             </p>
-            <a href="#" class="gradient-bg text-white px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition shadow-lg">
-                Ücretsiz Analiz Randevusu Al
-            </a>
-        </div>
-    </section>
-
-
-    <section id="hizmetler" class="py-20 max-w-7xl mx-auto px-4 space-y-32">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1 order-2 md:order-1">
-                <h3 class="text-3xl font-bold mb-4">Doğal Sesli AI Ajanları</h3>
-                <p class="text-slate-600 dark:text-slate-400">Telefon görüşmelerini insan doğallığında gerçekleştirir, randevuları alır ve tüm konuşmaları anlık olarak transkript (metin) dökümüyle panelinize işler.</p>
-            </div>
-            <div class="flex-1 order-1 md:order-2 w-full placeholder-box rounded-2xl text-slate-500">Görsel Alanı</div>
-        </div>
-
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1 w-full placeholder-box rounded-2xl text-slate-500">Görsel Alanı</div>
-            <div class="flex-1">
-                <h3 class="text-3xl font-bold mb-4">WhatsApp & Instagram Chatbot</h3>
-                <p class="text-slate-600 dark:text-slate-400">DM ve mesajlar arasında kaybolmayın. Satış odaklı diyalog yönetimi ile müşterilerinizi ikna eder, ürün bilgisi verir ve randevu aşamasına taşır.</p>
-            </div>
-        </div>
-
-        <div id="panel" class="flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1">
-                <h3 class="text-3xl font-bold mb-4">Özel Yönetim Paneli</h3>
-                <p class="text-slate-600 dark:text-slate-400 mb-6">CRM'lerin ötesinde bir deneyim. Instagram, WhatsApp ve Telefon randevularını tek bir merkezi takvimde toplar. Manuel süreçlere son verir.</p>
-                <div class="flex items-center gap-4">
-                    <span class="px-4 py-2 bg-green-500/20 text-green-500 rounded-full text-sm font-bold animate-pulse">+ Manuel Randevu Ekle</span>
-                    <span class="text-xs text-slate-500 italic">Sağ üstte parlayan buton!</span>
-                </div>
-            </div>
-            <div class="flex-1 w-full placeholder-box rounded-2xl text-slate-500 border-4 border-[#9625BC]/30 shadow-2xl relative">
-                Görsel Alanı (Panel Arayüzü)
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#contact" class="gradient-bg text-white px-12 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-brand-purple/20 transition-all active:scale-95">
+                    Ücretsiz Strateji Al
+                </a>
+                <a href="#hizmetler" class="bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
+                    Nasıl Çalışır?
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-50 dark:bg-slate-900/50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-10">Sektörel Çözümler</h2>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button onclick="showTab('klinik')" class="tab-btn px-6 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 transition active" data-tab="klinik">Klinik</button>
-                <button onclick="showTab('eticaret')" class="tab-btn px-6 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 transition" data-tab="eticaret">E-ticaret</button>
-                <button onclick="showTab('hizmet')" class="tab-btn px-6 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 transition" data-tab="hizmet">Hizmet</button>
-            </div>
-            <div id="tabContent" class="p-8 bg-white dark:bg-slate-800 rounded-3xl min-h-[150px] flex items-center justify-center italic text-lg">
-                Hastaların randevularını 7/24 düzenleyin, tedavi sonrası takip mesajlarını otomatize edin.
-            </div>
+    <div class="marquee-container w-full overflow-hidden py-10 border-y border-black/5 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/20 relative">
+        <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-bg-light dark:from-bg-dark to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg-light dark:from-bg-dark to-transparent z-10"></div>
+        
+        <div class="animate-marquee flex items-center gap-16 md:gap-32 px-10">
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold">OpenAI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold italic">Claude AI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-green-500">WhatsApp</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-pink-500">Instagram</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-brand-cyan">VAPI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold">NetGSM</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-orange-500">n8n</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold">OpenAI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold italic">Claude AI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-green-500">WhatsApp</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-pink-500">Instagram</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-brand-cyan">VAPI</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold">NetGSM</div>
+            <div class="flex items-center gap-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all text-lg font-bold text-orange-500">n8n</div>
         </div>
-    </section>
+    </div>
 
-
-    <section id="hesaplayici" class="py-20 bg-slate-50 dark:bg-slate-900/50">
-    <div class="max-w-4xl mx-auto px-4">
-        <div class="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-slate-200 dark:border-slate-700 text-center">
-            <h2 class="text-3xl font-bold mb-4">Kayıp Müşteri Analizi</h2>
-            <p class="text-slate-500 mb-10 text-sm">İşletmenize ulaşmaya çalışan ancak o an yanıt veremediğiniz potansiyel müşterilerinizi görün.</p>
+    <section id="hizmetler" class="py-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-32">
             
-            <div class="max-w-md mx-auto mb-12">
-                <label class="block text-sm font-semibold mb-3 text-left">Günlük Ortalama İletişim Sayısı (Çağrı, DM, WhatsApp)</label>
-                <input type="number" id="dailyTotal" value="50" class="w-full p-4 rounded-2xl border-2 border-slate-100 dark:bg-slate-700 dark:border-slate-600 outline-none focus:ring-4 ring-purple-500/20 focus:border-[#7FE5FF] text-2xl font-bold text-center transition-all">
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
-                    <p class="text-sm text-slate-500 mb-2">Günlük Kaçan</p>
-                    <div class="text-3xl font-bold gradient-text"><span id="dailyMissed">--</span> Kişi</div>
+            <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                <div class="flex-1 space-y-6">
+                    <span class="text-brand-purple font-bold text-sm tracking-widest uppercase">01. Sesli AI Ajanları</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">Telefonlarınızı İnsan Doğallığında Karşılayın.</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Sesli AI ajanlarımız, işletmenize gelen çağrıları saniyeler içinde yanıtlar. Randevu oluşturur, sıkça sorulan soruları yanıtlar ve tüm konuşmayı metne dökerek CRM'inize işler.
+                    </p>
                 </div>
-                <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
-                    <p class="text-sm text-slate-500 mb-2">Aylık Kaçan</p>
-                    <div class="text-3xl font-bold gradient-text"><span id="monthlyMissed">--</span> Kişi</div>
+                <div class="flex-1 w-full aspect-square md:aspect-video rounded-[3rem] gradient-bg p-1 shadow-2xl">
+                    <div class="w-full h-full bg-bg-light dark:bg-bg-dark rounded-[2.8rem] flex items-center justify-center overflow-hidden">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-brand-cyan/20 rounded-full mx-auto mb-4 animate-pulse flex items-center justify-center">
+                                <svg class="w-10 h-10 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                            </div>
+                            <span class="text-xs uppercase font-bold tracking-widest text-slate-500">Ses Dalgaları Analiz Ediliyor</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6 rounded-3xl bg-purple-500/5 dark:bg-purple-500/10 border-2 border-purple-500/20">
-                    <p class="text-sm text-purple-600 dark:text-purple-400 font-bold mb-2">Yıllık Toplam Kayıp</p>
-                    <div class="text-3xl font-bold gradient-text"><span id="yearlyMissed">--</span> Kişi</div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-16 md:gap-24">
+                <div class="flex-1 space-y-6">
+                    <span class="text-brand-cyan font-bold text-sm tracking-widest uppercase">02. Chatbot Otomasyonu</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">Müşterilerinizi Akıllı Diyaloglarla Karşılayın.</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Yapay zekamız işletmeniz hakkında bilgi verir, müsaitlik kontrolü yapar ve doğrudan randevuyu sisteme işler. Sekreterliğin iş yükünü %70 azaltır.
+                    </p>
+                </div>
+                <div class="flex-1 w-full rounded-[3rem] border border-brand-cyan/20 bg-slate-100 dark:bg-white/5 p-8 shadow-inner overflow-hidden">
+                    <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar text-sm">
+                        <div class="max-w-[80%] bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-bl-none shadow-sm ml-0 italic text-slate-500 text-xs">Hasta Bağlanıyor...</div>
+                        <div class="max-w-[80%] bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-bl-none shadow-sm ml-0">Merhaba, bel fıtığı tedavisi için bilgi alabilir miyim? Çok ağrım var.</div>
+                        <div class="max-w-[85%] gradient-bg text-white p-4 rounded-2xl rounded-br-none shadow-xl ml-auto">Geçmiş olsun! Bel fıtığı için Fizik Tedavi ve Robotik Lazer yöntemlerimiz mevcut. Sizi uzman doktorumuzun değerlendirmesi için randevu oluşturmamı ister misiniz?</div>
+                        <div class="max-w-[80%] bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-bl-none shadow-sm ml-0">Evet, randevu almak istiyorum. Önümüzdeki Salı günü müsaitlik var mı?</div>
+                        <div class="max-w-[85%] gradient-bg text-white p-4 rounded-2xl rounded-br-none shadow-xl ml-auto">Hemen takvimi kontrol ediyorum... 🗓️ Evet! Salı günü saat 14:30 için randevunuzu onayladım. Kayıt için T.C. Kimlik numaranızı rica edebilir miyim?</div>
+                        <div class="max-w-[85%] bg-green-500/10 text-green-500 border border-green-500/20 p-3 rounded-xl text-center text-xs font-bold uppercase tracking-widest mt-2">Randevu Onaylandı: Salı 14:30</div>
+                    </div>
                 </div>
             </div>
 
-            <p class="mt-8 text-[10px] text-slate-400 italic">
-                *Hesaplamalar, global işletme ortalaması olan %30'luk "yanıtlanamayan iletişim" oranı baz alınarak yapılmıştır.
-            </p>
-        </div>
-    </div>
-</section>
-
-    
-
-<section id="pricing" class="py-24 px-4 bg-white dark:bg-slate-950">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Paketlerimiz</h2>
-            <p class="text-slate-600 dark:text-slate-400">İşletmenizin ihtiyacına uygun AI çözümünü seçin.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-            <div class="p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col">
-                <h3 class="text-xl font-bold mb-2">Meta Paketi</h3>
-                <div class="text-4xl font-bold mb-6">5.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
-                <ul class="space-y-4 mb-8 flex-grow text-slate-600 dark:text-slate-400">
-                    <li class="flex items-center gap-2">✔ Instagram Chatbot Otomasyonu</li>
-                    <li class="flex items-center gap-2">✔ WhatsApp Business API</li>
-                    <li class="flex items-center gap-2">✔ Temel CRM Entegrasyonu</li>
-                </ul>
-                <a href="#contact" class="w-full py-3 text-center rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Satın Al</a>
-            </div>
-
-            <div class="relative p-8 rounded-3xl border-2 border-[#9625BC] bg-white dark:bg-slate-900 flex flex-col shadow-[0_0_40px_-10px_rgba(150,37,188,0.3)] transform scale-105 z-10">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 gradient-bg text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                    En Popüler
+            <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                <div class="flex-1 space-y-6">
+                    <span class="text-brand-purple font-bold text-sm tracking-widest uppercase">03. Merkezi Kontrol</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">Tek Ekran, Tam Hakimiyet.</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Tüm platformlardan gelen randevuları ve konuşma dökümlerini tek bir panelde toplayın. Manuel randevu ekleyin, performans analizi yapın ve işletmenizin nabzını tutun.
+                    </p>
                 </div>
-                <h3 class="text-xl font-bold mb-2">Toplu Paket</h3>
-                <div class="text-4xl font-bold mb-6 gradient-text">20.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
-                <ul class="space-y-4 mb-8 flex-grow font-medium">
-                    <li class="flex items-center gap-2">✨ Tüm Meta Otomasyonları</li>
-                    <li class="flex items-center gap-2">✨ Sesli AI Ajanları</li>
-                    <li class="flex items-center gap-2">✨ Assistune Özel Yönetim Paneli</li>
-                    <li class="flex items-center gap-2">✨ 7/24 Teknik Destek</li>
-                </ul>
-                <a href="#contact" class="w-full py-4 text-center rounded-xl gradient-bg text-white font-bold hover:opacity-90 transition shadow-lg shadow-purple-500/20">Hemen Başla</a>
+                <div class="flex-1 w-full glass-card rounded-[3rem] p-6 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 gradient-bg"></div>
+                    <div class="flex items-center justify-between mb-8 border-b border-black/5 dark:border-white/10 pb-4">
+                        <span class="font-bold text-sm">Yönetim Paneli</span>
+                        <div class="flex gap-2">
+                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-100 dark:bg-white/5 p-4 rounded-xl">
+                            <div class="text-xs text-slate-500 mb-1">Randevular</div>
+                            <div class="text-2xl font-bold">+12</div>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-white/5 p-4 rounded-xl">
+                            <div class="text-xs text-slate-500 mb-1">Verimlilik</div>
+                            <div class="text-2xl font-bold text-green-500">%100</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analiz" class="py-32 bg-slate-50 dark:bg-slate-900/40 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card p-12 md:p-20 rounded-[3.5rem] relative overflow-hidden border-2 border-brand-purple/10">
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">Kaçan Müşteri Analizi</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Her 100 potansiyel müşteriden 25'i yanıtsız kaldığında oluşan tabloyu inceleyin.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div class="space-y-12">
+                        <div class="space-y-8">
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <label class="text-sm font-bold text-slate-500 uppercase">Aylık İletişim Hacmi</label>
+                                    <span class="text-3xl font-bold text-brand-purple font-mono" id="rangeValue">1000</span>
+                                </div>
+                                <input type="range" id="dailyTotal" min="100" max="10000" step="100" value="1000" class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="text-sm font-bold text-slate-500 uppercase block mb-4">Müşteri Başına Kazanç (TL)</label>
+                                <input type="number" id="customerValue" value="2500" class="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl text-xl font-bold outline-none focus:ring-2 ring-brand-cyan transition-all">
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-bold">
+                                    <span class="text-rose-500">Mevcut Kayıp Oranı (%25)</span>
+                                    <span id="lossPercent" class="text-rose-500">₺--</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
+                                    <div id="lossBar" class="h-full bg-rose-500 progress-bar-inner" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm font-bold">
+                                    <span class="text-emerald-500">AI Kurtarma Potansiyeli (%85)</span>
+                                    <span id="recoveryPercent" class="text-emerald-500">₺--</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
+                                    <div id="recoveryBar" class="h-full gradient-bg progress-bar-inner" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-bg-dark rounded-[2.5rem] p-10 border border-slate-200 dark:border-white/10 shadow-2xl">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Yıllık Potansiyel Kayıp</p>
+                        <div class="text-6xl font-extrabold text-rose-500 mb-8">₺<span id="yearlyLoss">--</span></div>
+                        <div class="pt-8 border-t border-slate-100 dark:border-white/5">
+                            <p class="text-xs font-bold text-brand-purple uppercase tracking-widest mb-4">Assistune İle Geri Kazanılacak</p>
+                            <div class="text-5xl font-extrabold text-slate-900 dark:text-white">₺<span id="aiRecovery">--</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 overflow-hidden bg-bg-light dark:bg-bg-dark">
+        <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Referans Deneyimleri</h2>
+            <p class="text-slate-600 dark:text-slate-400">İşletmesini AI ile geleceğe taşıyan profesyonellerin hikayeleri.</p>
+        </div>
+
+        <div class="marquee-container w-full overflow-hidden relative">
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-bg-light dark:from-bg-dark to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-bg-light dark:from-bg-dark to-transparent z-10"></div>
+            
+            <div class="animate-marquee-slow flex items-stretch gap-8 px-4">
+                <div class="w-[450px] glass-card p-8 rounded-[2.5rem] flex flex-col justify-between border-2 border-brand-purple/5">
+                    <p class="text-slate-700 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Gece gündüz aramalarımız yanıtlanıyor, Instagram ve WhatsApp'tan gelen her soruya anında dönülüyor. Randevuları panelden tek tıkla izleyebiliyorum, artık sadece hastalarıma odaklanıyorum."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-black/5 dark:border-white/5 pt-6">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold text-white text-xl">FY</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Doktor Faruk Yılmaz</h4>
+                            <p class="text-xs text-brand-purple font-bold uppercase tracking-wider">Fonksiyonel Tıp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[450px] glass-card p-8 rounded-[2.5rem] flex flex-col justify-between border-2 border-brand-cyan/5">
+                    <p class="text-slate-700 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Danışanlarımın öğün sorularına ve bilgi taleplerine Assistune anında cevap veriyor. İş yüküm azaldı, satışlarım %30 arttı. Akşamları telefon bildirimlerinden kurtulup rahat bir uyku çekiyorum."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-black/5 dark:border-white/5 pt-6">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold text-white text-xl">SE</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Diyetisyen Selin Erdem</h4>
+                            <p class="text-xs text-brand-cyan font-bold uppercase tracking-wider">Beslenme Uzmanı</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[450px] glass-card p-8 rounded-[2.5rem] flex flex-col justify-between border-2 border-brand-purple/5">
+                    <p class="text-slate-700 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Tıraş yaparken telefon çalması derdim bitti. Randevular WhatsApp'tan otomatiğe bağlandı. Panelden kimin geleceğini görüp hazırlanıyorum, koltuklar hiç boş kalmıyor."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-black/5 dark:border-white/5 pt-6">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center font-bold text-white text-xl">AU</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Ahmet Usta</h4>
+                            <p class="text-xs text-brand-purple font-bold uppercase tracking-wider">Hair Artist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-32 px-6 bg-slate-50 dark:bg-slate-900/20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">💡 Sıkça Sorulan Sorular</h2>
+                <p class="text-slate-600 dark:text-slate-400 font-medium">Genel süreç, kurulum ve teknik detaylar hakkında merak ettikleriniz.</p>
             </div>
 
-            <div class="p-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col">
-                <h3 class="text-xl font-bold mb-2">Arama & Konuşma</h3>
-                <div class="text-4xl font-bold mb-6">18.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
-                <ul class="space-y-4 mb-8 flex-grow text-slate-600 dark:text-slate-400">
-                    <li class="flex items-center gap-2">✔ Doğal Sesli AI Ajanları</li>
-                    <li class="flex items-center gap-2">✔ Akıllı Telefon Otomasyonu</li>
-                    <li class="flex items-center gap-2">✔ Sesli Transkript & Analiz</li>
-                </ul>
-                <a href="#contact" class="w-full py-3 text-center rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Satın Al</a>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-xl font-bold text-brand-purple mb-6 pl-4 border-l-4 border-brand-purple uppercase tracking-widest text-sm">Genel Süreç ve Kurulum</h3>
+                    <div class="space-y-4">
+                        <div class="faq-item glass-card rounded-3xl border border-black/5 dark:border-white/10 group cursor-pointer overflow-hidden" onclick="toggleFaq(this)">
+                            <div class="p-6 flex justify-between items-center gap-4">
+                                <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-purple transition-colors">1. Sistem ne kadar sürede aktif olur?</h4>
+                                <span class="faq-icon transition-transform duration-300 text-brand-purple font-bold">▼</span>
+                            </div>
+                            <div class="faq-answer px-6 text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                                Kurulum işlemlerine başladığımızda, sizinle kısa bir ön görüşme yaparak işletmenizi analiz ediyoruz. Bu analizden sonra tüm sistemleriniz (Sesli bot, WhatsApp ve Instagram) 48 saat içerisinde hazır hale getirilerek teslim edilir.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 px-6 bg-white dark:bg-bg-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">Yatırım Planları</h2>
+                <p class="text-slate-600 dark:text-slate-400">İşletmenizin ölçeğine uygun profesyonel otomasyon paketleri.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <div class="glass-card p-10 rounded-[2.5rem] flex flex-col border border-slate-100 dark:border-white/5">
+                    <h3 class="text-xl font-bold mb-2">Meta Paketi</h3>
+                    <p class="text-slate-500 text-sm mb-8">Sosyal medya otomasyonu.</p>
+                    <div class="text-4xl font-extrabold mb-8 text-slate-900 dark:text-white">5.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm">
+                        <li class="flex items-center gap-3"><span class="text-brand-purple">✔</span> Instagram Chatbot</li>
+                        <li class="flex items-center gap-3"><span class="text-brand-purple">✔</span> WhatsApp API</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 text-center rounded-2xl border border-slate-200 dark:border-white/10 font-bold hover:bg-slate-50 dark:hover:bg-white/5 transition-all">Satın Al</a>
+                </div>
+
+                <div class="relative glass-card p-10 rounded-[2.5rem] flex flex-col border-2 border-brand-purple/30 shadow-[0_20px_50px_rgba(150,37,188,0.1)] scale-105 z-10 bg-white dark:bg-slate-900">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 gradient-bg text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">En Popüler</div>
+                    <h3 class="text-xl font-bold mb-2">Toplu Paket</h3>
+                    <p class="text-slate-500 text-sm mb-8">Tam teşekküllü AI merkezi.</p>
+                    <div class="text-4xl font-extrabold mb-8 gradient-text">20.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-semibold">
+                        <li class="flex items-center gap-3">✨ Tüm Meta Otomasyonları</li>
+                        <li class="flex items-center gap-3">✨ Sesli AI Ajanları</li>
+                        <li class="flex items-center gap-3">✨ Assistune Yönetim Paneli</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 text-center rounded-2xl gradient-bg text-white font-bold shadow-xl shadow-brand-purple/20 hover:scale-105 transition-all">Hemen Başla</a>
+                </div>
+
+                <div class="glass-card p-10 rounded-[2.5rem] flex flex-col border border-slate-100 dark:border-white/5">
+                    <h3 class="text-xl font-bold mb-2">Arama & Konuşma</h3>
+                    <p class="text-slate-500 text-sm mb-8">Telefon odaklı hizmet.</p>
+                    <div class="text-4xl font-extrabold mb-8 text-slate-900 dark:text-white">18.000 TL <span class="text-sm font-normal text-slate-500">/ay</span></div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm">
+                        <li class="flex items-center gap-3"><span class="text-brand-cyan">✔</span> Sesli AI Ajanları</li>
+                        <li class="flex items-center gap-3"><span class="text-brand-cyan">✔</span> Transkript & Analiz</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-4 text-center rounded-2xl border border-slate-200 dark:border-white/10 font-bold hover:bg-slate-50 dark:hover:bg-white/5 transition-all">Satın Al</a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="mt-16 p-8 rounded-3xl bg-slate-100 dark:bg-slate-900 text-center border border-dashed border-slate-300 dark:border-slate-700">
-            <h4 class="text-xl font-bold mb-2">Özel İhtiyaçlar & Enterprise</h4>
-            <p class="text-slate-600 dark:text-slate-400">Daha büyük ölçekli operasyonlar, mail otomasyonu veya özel API entegrasyonları için size özel bir çözüm kurgulayalım.</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="py-24 px-4 bg-slate-50 dark:bg-slate-950">
-    <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-800">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">İşletmenizi bir üst seviyeye taşımaya hazır mısınız?</h2>
-            <p class="text-slate-500">Bizimle iletişime geçin, otomasyon sürecinizi bugün başlatalım.</p>
-        </div>
-
-        <form class="space-y-6" id="assistuneContactForm">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label class="block text-sm font-medium mb-2">Adınız Soyadınız</label>
-            <input type="text" id="name" required placeholder="John Doe" class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 ring-purple-500 outline-none transition text-slate-900 dark:text-white">
-        </div>
-        <div>
-            <label class="block text-sm font-medium mb-2">İşletme Adı</label>
-            <input type="text" id="business" required placeholder="Assistune Ltd." class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 ring-purple-500 outline-none transition text-slate-900 dark:text-white">
-        </div>
-    </div>
-    
-    <div>
-        <label class="block text-sm font-medium mb-2">Telefon Numaranız</label>
-        <input type="tel" id="phone" required placeholder="+90 5XX XXX XX XX" class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 ring-purple-500 outline-none transition text-slate-900 dark:text-white">
-    </div>
-
-    <div>
-        <label class="block text-sm font-medium mb-2">Mesajınız</label>
-        <textarea id="message" rows="4" placeholder="İhtiyaçlarınızdan kısaca bahsedin..." class="w-full p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 ring-purple-500 outline-none transition text-slate-900 dark:text-white"></textarea>
-    </div>
-    
-    <div class="flex flex-col md:flex-row gap-4 pt-4">
-        <button type="submit" id="submitBtn" class="flex-1 gradient-bg text-white py-4 rounded-2xl font-bold hover:opacity-90 transition shadow-lg disabled:opacity-50">
-            Mesaj Gönder
-        </button>
-        <a href="https://wa.me/905XXXXXXXXX" target="_blank" class="flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-600 transition shadow-lg">
-            WhatsApp ile Başla
-        </a>
-    </div>
-</form>
-
-       
-        
-    </div>
-</section>
-
-
-    <footer class="py-12 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="font-bold text-xl gradient-text tracking-tighter">ASSISTUNE</div>
-            <div class="flex space-x-6 text-slate-500">
-                <a href="#" class="hover:text-[#7FE5FF]">Instagram</a>
-                <a href="#" class="hover:text-[#7FE5FF]">LinkedIn</a>
-                <a href="#" class="hover:text-[#7FE5FF]">X</a>
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Geleceği Birlikte Kuralım</h2>
+                <p class="text-slate-600 dark:text-slate-400">Ücretsiz ön analiz ve demo için formu doldurun.</p>
             </div>
-            <div class="text-sm text-slate-500">© 2025 Assistune AI. Tüm Hakları Saklıdır.</div>
-        </div>
 
-        
+            <form id="assistuneContactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" id="name" required placeholder="İsim Soyisim" class="bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:ring-2 ring-brand-purple transition-all">
+                <input type="text" id="business" required placeholder="Şirket Adı" class="bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:ring-2 ring-brand-purple transition-all">
+                <input type="tel" id="phone" required placeholder="Telefon Numarası" class="md:col-span-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:ring-2 ring-brand-purple transition-all">
+                <textarea id="message" rows="4" placeholder="Hangi süreçlerinizi otomatize etmek istersiniz?" class="md:col-span-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:ring-2 ring-brand-purple transition-all"></textarea>
+                <div class="md:col-span-2">
+                    <button type="submit" id="submitBtn" class="w-full gradient-bg text-white py-6 rounded-2xl font-bold text-xl hover:shadow-2xl hover:shadow-brand-purple/40 transition-all flex justify-center items-center gap-4 active:scale-95">
+                        <span id="btnText">Ücretsiz Analiz Başlat</span>
+                        <div id="loader" class="hidden w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-slate-200 dark:border-white/5 text-center">
+        <div class="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tighter">ASSISTUNE<span class="text-brand-purple">.</span></div>
+        <p class="text-slate-500 text-sm">© 2025 Assistune AI. Ankara, Türkiye.</p>
     </footer>
 
-    <script>
-        // ROI Calculator Logic
-        const missedCalls = document.getElementById('missedCalls');
-        const minsPerCall = document.getElementById('minsPerCall');
-        const roiResult = document.getElementById('roiResult');
-
-        function calculateROI() {
-            const monthlyCalls = missedCalls.value * 30;
-            const totalMins = monthlyCalls * minsPerCall.value;
-            const totalHours = Math.round(totalMins / 60);
-            roiResult.innerText = totalHours;
-        }
-
-        [missedCalls, minsPerCall].forEach(input => input.addEventListener('input', calculateROI));
-        calculateROI();
-
-        // Dark Mode Logic
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            document.getElementById('theme-icon').innerText = isDark ? '🌙' : '☀️';
-        }
-
-        // Tab Logic
-        const tabs = {
-            klinik: "Hastaların randevularını 7/24 düzenleyin, tedavi sonrası takip mesajlarını otomatize edin.",
-            eticaret: "Sepette ürün bırakan müşterilere özel indirimler sunun ve kargo sorgularını anında yanıtlayın.",
-            hizmet: "Teklif süreçlerini hızlandırın, saha ekiplerinizin takvimini AI ile koordine edin."
-        };
-
-        function showTab(type) {
-            document.getElementById('tabContent').innerText = tabs[type];
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('gradient-bg', 'text-white');
-                if(btn.getAttribute('data-tab') === type) btn.classList.add('gradient-bg', 'text-white');
-            });
-        }
-        showTab('klinik'); // Initial
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
