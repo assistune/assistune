@@ -86,7 +86,7 @@ function toggleDarkMode() {
 }
 
 // n8n Webhook URL'nizi buraya yapıştırın
-const N8N_WEBHOOK_URL = 'https://n8n.sizin-domaininiz.com/webhook/asistune-form';
+const N8N_WEBHOOK_URL = 'https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243';
 
 document.getElementById('assistuneContactForm').addEventListener('submit', async (e) => {
     e.preventDefault(); // Sayfanın yenilenmesini engelle
@@ -131,3 +131,4 @@ document.getElementById('assistuneContactForm').addEventListener('submit', async
         submitBtn.innerText = originalBtnText;
     }
 });
+
