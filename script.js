@@ -84,3 +84,50 @@ function toggleDarkMode() {
         themeIcon.innerText = htmlElement.classList.contains('dark') ? '🌙' : '☀️';
     }
 }
+
+// n8n Webhook URL'nizi buraya yapıştırın
+const N8N_WEBHOOK_URL = 'https://n8n.sizin-domaininiz.com/webhook/asistune-form';
+
+document.getElementById('assistuneContactForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Sayfanın yenilenmesini engelle
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const originalBtnText = submitBtn.innerText;
+    
+    // Verileri Topla
+    const formData = {
+        name: document.getElementById('name').value,
+        business: document.getElementById('business').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value,
+        source: 'Landing Page',
+        date: new Date().toLocaleString('tr-TR')
+    };
+
+    try {
+        // Butonu yükleniyor moduna sok
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Gönderiliyor...';
+
+        const response = await fetch(N8N_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            alert('Mesajınız başarıyla alındı! En kısa sürede size döneceğiz.');
+            e.target.reset(); // Formu temizle
+        } else {
+            throw new Error('Bir hata oluştu.');
+        }
+    } catch (error) {
+        console.error('Hata:', error);
+        alert('Mesaj gönderilirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+    }
+});
