@@ -1,56 +1,106 @@
-/* Google Fonts Entegrasyonu */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
 :root {
-    --primary-gradient: linear-gradient(90deg, #7FE5FF 0%, #9625BC 100%);
+    --brand-primary: #7FE5FF;
+    --brand-secondary: #9625BC;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
+body { 
+    font-family: 'Inter', sans-serif; 
+    letter-spacing: -0.02em;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Başlıklar ve Vurgulu Metinler İçin Gradyan */
 .gradient-text {
-    background: var(--primary-gradient);
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
-/* Butonlar ve Arka Planlar İçin Gradyan */
 .gradient-bg {
-    background: var(--primary-gradient);
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
 }
 
-/* Boş Görsel Alanları (Placeholder) */
-.placeholder-box {
-    background: rgba(128, 128, 128, 0.1);
-    border: 2px dashed rgba(128, 128, 128, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 320px;
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
 
-.dark .placeholder-box {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
+.dark .glass-card {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Manuel Randevu Butonu Animasyonu */
-@keyframes pulse-green {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+/* Visual Progress Bar */
+.progress-bar-inner {
+    transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
-.animate-pulse-custom {
-    animation: pulse-green 2s infinite;
+/* Custom Range Slider */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--brand-secondary);
+    cursor: pointer;
+    border: 2px solid white;
 }
 
-/* Yumuşak Geçişler */
-.tab-btn {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+#notification {
+    transform: translateY(100px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#notification.show { transform: translateY(0); }
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+    display: flex;
+    width: max-content;
+    animation: marquee 80s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee,
+.marquee-container:hover .animate-marquee-slow {
+    animation-play-state: paused;
+}
+
+/* FAQ Accordion Styles */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    opacity: 1;
+    padding-bottom: 1.5rem;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Custom Scrollbar for Chat Preview */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(150, 37, 188, 0.2);
+    border-radius: 10px;
 }
