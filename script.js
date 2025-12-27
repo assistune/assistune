@@ -85,51 +85,54 @@ function toggleDarkMode() {
     }
 }
 
-// n8n Webhook URL'nizi buraya yapıştırın
-const N8N_WEBHOOK_URL = 'https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243';
+document.addEventListener('DOMContentLoaded', () => {
+    // Mevcut kodların (Hesaplayıcı, Tab vb.) burada durmaya devam etsin...
 
-document.getElementById('assistuneContactForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Sayfanın yenilenmesini engelle
-    
-    const submitBtn = document.getElementById('submitBtn');
-    const originalBtnText = submitBtn.innerText;
-    
-    // Verileri Topla
-    const formData = {
-        name: document.getElementById('name').value,
-        business: document.getElementById('business').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value,
-        source: 'Landing Page',
-        date: new Date().toLocaleString('tr-TR')
-    };
+    const contactForm = document.getElementById('assistuneContactForm');
+    const N8N_WEBHOOK_URL = 'https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243';
 
-    try {
-        // Butonu yükleniyor moduna sok
-        submitBtn.disabled = true;
-        submitBtn.innerText = 'Gönderiliyor...';
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log("Form gönderimi başladı..."); // Konsolda görünüyor mu kontrol et
 
-        const response = await fetch(N8N_WEBHOOK_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerText;
+
+            const formData = {
+                name: document.getElementById('name').value,
+                business: document.getElementById('business').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value,
+                source: 'Landing Page',
+                date: new Date().toLocaleString('tr-TR')
+            };
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Gönderiliyor...';
+
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Mesajınız başarıyla alındı!');
+                    contactForm.reset();
+                } else {
+                    alert('Sunucu hatası: ' + response.status);
+                }
+            } catch (error) {
+                console.error('Hata detayı:', error);
+                alert('Mesaj gönderilemedi. Bağlantınızı kontrol edin.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
+            }
         });
-
-        if (response.ok) {
-            alert('Mesajınız başarıyla alındı! En kısa sürede size döneceğiz.');
-            e.target.reset(); // Formu temizle
-        } else {
-            throw new Error('Bir hata oluştu.');
-        }
-    } catch (error) {
-        console.error('Hata:', error);
-        alert('Mesaj gönderilirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = originalBtnText;
+    } else {
+        console.error("Hata: 'assistuneContactForm' ID'li form bulunamadı!");
     }
 });
-
-
