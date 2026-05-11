@@ -123,10 +123,12 @@
 <body class="relative">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-40 bg-white/90 backdrop-blur-md border-b border-black/5">
-        <div class="max-w-7xl mx-auto px-8 md:px-12 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
             <a href="#" class="block flex-shrink-0">
                 <img src="Logo.png" alt="Assistune Logo" class="h-8 md:h-10 w-auto object-contain">
             </a>
+            
+            <!-- Desktop Links -->
             <div class="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm font-semibold text-neutral-500">
                 <a href="#voice" class="hover:text-black transition-colors">Sesli Asistan</a>
                 <a href="#chatbot" class="hover:text-black transition-colors">Akıllı Chatbot</a>
@@ -135,33 +137,55 @@
                 <a href="#security" class="hover:text-black transition-colors">Veri Güvenliği</a>
                 <a href="#pricing" class="hover:text-black transition-colors">Fiyatlandırma</a>
             </div>
-            <div class="flex items-center space-x-6">
-                <a href="#" class="text-sm font-bold hover:text-[#3d5afe] transition-colors text-black">Giriş Yap</a>
-                <a href="#contact" class="cta-button bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold inline-block">Demo Al</a>
+            
+            <!-- Action Buttons & Mobile Menu Toggle -->
+            <div class="flex items-center space-x-3 md:space-x-6">
+                <a href="#" class="hidden md:block text-sm font-bold hover:text-[#3d5afe] transition-colors text-black">Giriş Yap</a>
+                <a href="#contact" class="cta-button bg-black text-white px-5 md:px-6 py-2 md:py-2.5 rounded-full text-sm font-bold inline-block">Demo Al</a>
+                
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-black focus:outline-none p-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/5 absolute w-full shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-semibold text-neutral-600">
+                <a href="#voice" class="mobile-link hover:text-black transition-colors">Sesli Asistan</a>
+                <a href="#chatbot" class="mobile-link hover:text-black transition-colors">Akıllı Chatbot</a>
+                <a href="#ai-twin" class="mobile-link hover:text-black transition-colors">AI İkiz</a>
+                <a href="#features" class="mobile-link hover:text-black transition-colors">Özellikler</a>
+                <a href="#security" class="mobile-link hover:text-black transition-colors">Veri Güvenliği</a>
+                <a href="#pricing" class="mobile-link hover:text-black transition-colors">Fiyatlandırma</a>
+                <div class="pt-4 border-t border-black/5">
+                    <a href="#" class="mobile-link text-black font-bold block">Giriş Yap</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-40 pb-20 relative overflow-hidden bg-white">
+    <header class="pt-32 md:pt-40 pb-16 md:pb-20 relative overflow-hidden bg-white">
         <div class="max-w-7xl mx-auto text-center relative z-10 px-4 md:px-8">
-            <div class="inline-block px-5 py-2 mb-10 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black tracking-[0.2em] uppercase text-black/60">
+            <div class="inline-block px-5 py-2 mb-8 md:mb-10 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black tracking-[0.2em] uppercase text-black/60">
                 Klinik İletişiminin Geleceği
             </div>
-            <h1 class="hero-title font-bold gradient-text mb-10">
+            <h1 class="hero-title font-bold gradient-text mb-8 md:mb-10">
                 Gürültüyü Susturun.<br>Cevheri Yakalayın.
             </h1>
-            <p class="max-w-2xl mx-auto text-lg md:text-xl text-neutral-500 mb-14 leading-relaxed font-medium">
+            <p class="max-w-2xl mx-auto text-base md:text-xl text-neutral-500 mb-10 md:mb-14 leading-relaxed font-medium">
                 Reklamlarınızdan gelen binlerce çöp mesajın içinde boğulmayın. Assistune AI, gereksiz soruları %90 oranında filtreler; ekibinize sadece randevuya hazır sıcak fırsatları bırakır.
             </p>
-            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-24">
-                <button class="cta-button bg-[#3d5afe] inline-block text-center text-white px-12 py-5 rounded-full text-lg font-bold w-full md:w-auto">Hemen Başlayın</button>
-                <button class="px-12 py-5 rounded-full text-lg font-bold border border-[#b8cbde] hover:bg-[#b8cbde]/20 w-full md:w-auto text-black transition-all">Sistemi İzleyin</button>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-16 md:mb-24 px-4">
+                <button class="cta-button bg-[#3d5afe] block text-center text-white px-12 py-4 md:py-5 rounded-full text-lg font-bold w-full md:w-auto">Hemen Başlayın</button>
+                <button class="px-12 py-4 md:py-5 rounded-full text-lg font-bold border border-[#b8cbde] hover:bg-[#b8cbde]/20 w-full md:w-auto text-black transition-all">Sistemi İzleyin</button>
             </div>
 
             <!-- Dashboard Preview -->
             <div class="max-w-5xl mx-auto p-4 glass-card bg-gradient-to-br from-white to-[#b8cbde]/15 rounded-3xl relative">
-                <div class="flex items-center justify-between mb-8 px-6">
+                <div class="flex items-center justify-between mb-6 md:mb-8 px-4 md:px-6">
                     <div class="flex space-x-2">
                         <div class="w-2.5 h-2.5 rounded-full bg-red-400/60"></div>
                         <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/60"></div>
@@ -170,28 +194,28 @@
                     <div class="text-[9px] text-neutral-400 font-bold tracking-[0.3em]">ASSISTUNE OS v2.0</div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pb-4 px-2">
-                    <div class="p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-left pb-2 md:pb-4 px-2">
+                    <div class="p-6 md:p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
                         <div class="text-[10px] uppercase tracking-widest text-neutral-400 mb-3 font-black">AI Gürültü Filtresi</div>
-                        <div class="text-4xl font-bold text-[#3d5afe] tracking-tighter">1.842</div>
-                        <div class="text-[11px] text-neutral-500 mt-3 font-medium">Mesaj ekibinize ulaşmadan elendi</div>
+                        <div class="text-3xl md:text-4xl font-bold text-[#3d5afe] tracking-tighter">1.842</div>
+                        <div class="text-[10px] md:text-[11px] text-neutral-500 mt-3 font-medium">Mesaj ekibinize ulaşmadan elendi</div>
                     </div>
-                    <div class="p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
+                    <div class="p-6 md:p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
                         <div class="text-[10px] uppercase tracking-widest text-neutral-400 mb-3 font-black">Sıcak Lead</div>
-                        <div class="text-4xl font-bold text-orange-500 tracking-tighter">158</div>
-                        <div class="text-[11px] text-neutral-500 mt-3 font-medium">Randevuya hazır potansiyel hasta</div>
+                        <div class="text-3xl md:text-4xl font-bold text-orange-500 tracking-tighter">158</div>
+                        <div class="text-[10px] md:text-[11px] text-neutral-500 mt-3 font-medium">Randevuya hazır potansiyel hasta</div>
                     </div>
-                    <div class="p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
+                    <div class="p-6 md:p-8 bg-gradient-to-br from-white to-[#b8cbde]/20 border border-black/5 rounded-2xl">
                         <div class="text-[10px] uppercase tracking-widest text-neutral-400 mb-3 font-black">Kazanılan Mesai</div>
-                        <div class="text-4xl font-bold text-green-600 tracking-tighter">14.5 Sa</div>
-                        <div class="text-[11px] text-neutral-500 mt-3 font-medium">Bu hafta ekibinize kazandırılan süre</div>
+                        <div class="text-3xl md:text-4xl font-bold text-green-600 tracking-tighter">14.5 Sa</div>
+                        <div class="text-[10px] md:text-[11px] text-neutral-500 mt-3 font-medium">Bu hafta ekibinize kazandırılan süre</div>
                     </div>
                 </div>
             </div>
 
             <!-- Integrations Marquee -->
-            <div class="mt-20 pt-10 border-t border-black/5 mask-edges overflow-hidden relative">
-                <div class="text-[10px] font-black uppercase tracking-widest text-neutral-400 mb-8 text-center">Entegre Altyapılar & Partnerler</div>
+            <div class="mt-16 md:mt-20 pt-8 md:pt-10 border-t border-black/5 mask-edges overflow-hidden relative">
+                <div class="text-[10px] font-black uppercase tracking-widest text-neutral-400 mb-6 md:mb-8 text-center">Entegre Altyapılar & Partnerler</div>
                 <div class="animate-marquee items-center">
                     <!-- First Set -->
                     <div class="flex space-x-12 md:space-x-20 items-center pr-12 md:pr-20">
@@ -204,7 +228,7 @@
                         <img src="https://placehold.co/180x40/transparent/a3a3a3?text=Startup+House" alt="Startup House" class="h-7 md:h-9 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
                         <img src="https://placehold.co/180x40/transparent/a3a3a3?text=TURKSAT+BIGG" alt="TÜRKSAT BİGG" class="h-7 md:h-9 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
                     </div>
-                    <!-- Second Set (Duplicate for seamless loop) -->
+                    <!-- Second Set -->
                     <div class="flex space-x-12 md:space-x-20 items-center pr-12 md:pr-20">
                         <img src="https://placehold.co/140x40/transparent/a3a3a3?text=WhatsApp" alt="WhatsApp" class="h-7 md:h-9 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
                         <img src="https://placehold.co/140x40/transparent/a3a3a3?text=Instagram" alt="Instagram" class="h-7 md:h-9 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
@@ -221,51 +245,51 @@
     </header>
 
     <!-- Core Philosophy -->
-    <section id="how" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-            <div class="pr-4">
-                <h2 class="text-4xl md:text-5xl font-bold mb-10 tracking-tight text-black leading-[1.1]">Reklam Bütçenizi<br>Kaosta Eritmeyin.</h2>
-                <div class="space-y-10">
-                    <div class="flex space-x-8">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+    <section id="how" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div class="pr-0 md:pr-4">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 md:mb-10 tracking-tight text-black leading-[1.1]">Reklam Bütçenizi<br>Kaosta Eritmeyin.</h2>
+                <div class="space-y-8 md:space-y-10">
+                    <div class="flex space-x-6 md:space-x-8">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
                             <span class="text-red-500 font-bold text-xl">!</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold mb-2 text-black">Gürültü: 1.800 Mesaj</h4>
-                            <p class="text-neutral-500 leading-relaxed font-medium">"Konum atar mısınız?", "Fiyat nedir?", "Pazar açık mı?" gibi her gün yüzlerce kez sorulan rutin sorular.</p>
+                            <h4 class="text-lg md:text-xl font-bold mb-2 text-black">Gürültü: 1.800 Mesaj</h4>
+                            <p class="text-sm md:text-base text-neutral-500 leading-relaxed font-medium">"Konum atar mısınız?", "Fiyat nedir?", "Pazar açık mı?" gibi her gün yüzlerce kez sorulan rutin sorular.</p>
                         </div>
                     </div>
-                    <div class="flex space-x-8">
-                        <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center flex-shrink-0 border border-green-100">
+                    <div class="flex space-x-6 md:space-x-8">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-green-50 flex items-center justify-center flex-shrink-0 border border-green-100">
                             <span class="text-green-600 font-bold text-xl">✓</span>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold mb-2 text-black">Cevher: 200 Lead</h4>
-                            <p class="text-neutral-500 leading-relaxed font-medium">"Cuma günü Hacamat için randevu almak istiyorum." diyen, kliniğinize ciro kazandıracak gerçek hastalar.</p>
+                            <h4 class="text-lg md:text-xl font-bold mb-2 text-black">Cevher: 200 Lead</h4>
+                            <p class="text-sm md:text-base text-neutral-500 leading-relaxed font-medium">"Cuma günü Hacamat için randevu almak istiyorum." diyen, kliniğinize ciro kazandıracak gerçek hastalar.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="glass-card rounded-[2.5rem] p-10 bg-gradient-to-br from-white to-[#b8cbde]/15">
-                <div class="space-y-6 text-black">
-                    <div class="p-5 bg-gradient-to-br from-white to-[#b8cbde]/10 border border-black/5 rounded-2xl opacity-40">
+            <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 bg-gradient-to-br from-white to-[#b8cbde]/15">
+                <div class="space-y-4 md:space-y-6 text-black">
+                    <div class="p-4 md:p-5 bg-gradient-to-br from-white to-[#b8cbde]/10 border border-black/5 rounded-xl md:rounded-2xl opacity-40">
                         <div class="flex justify-between items-center mb-3">
                             <span class="text-[10px] font-black tracking-widest opacity-40 uppercase">WhatsApp</span>
                             <span class="status-badge bg-neutral-100 text-neutral-400 font-black">Soğuk</span>
                         </div>
                         <p class="text-sm font-medium">"Fiyat nedir acaba?"</p>
                     </div>
-                    <div class="p-6 border border-[#b8cbde]/40 bg-gradient-to-br from-white to-[#b8cbde]/25 rounded-2xl">
+                    <div class="p-5 md:p-6 border border-[#b8cbde]/40 bg-gradient-to-br from-white to-[#b8cbde]/25 rounded-xl md:rounded-2xl">
                         <div class="flex justify-between items-center mb-3">
                             <span class="text-[10px] font-black tracking-widest text-blue-600 uppercase">Instagram DM</span>
                             <span class="status-badge bg-orange-100 text-orange-600 border border-orange-200">Sıcak Lead 🔥</span>
                         </div>
-                        <p class="text-sm font-semibold mb-4">"Cuma günü için müsaitlik var mı? Hacamat yaptırmak istiyorum, iğne korkum var."</p>
-                        <div class="mt-4 pt-4 border-t border-black/5 text-[11px] text-blue-600 font-bold flex items-center">
-                            <span class="mr-2">🤖 AI ÖZETİ:</span> Yeni hasta, iğne korkusu belirtildi, randevu bekliyor.
+                        <p class="text-sm md:text-base font-semibold mb-4">"Cuma günü için müsaitlik var mı? Hacamat yaptırmak istiyorum, iğne korkum var."</p>
+                        <div class="mt-4 pt-4 border-t border-black/5 text-[10px] md:text-[11px] text-blue-600 font-bold flex items-center">
+                            <span class="mr-2">🤖 AI ÖZETİ:</span> Yeni hasta, iğne korkusu, randevu.
                         </div>
                     </div>
-                    <div class="p-5 bg-gradient-to-br from-white to-[#b8cbde]/10 border border-black/5 rounded-2xl opacity-40">
+                    <div class="p-4 md:p-5 bg-gradient-to-br from-white to-[#b8cbde]/10 border border-black/5 rounded-xl md:rounded-2xl opacity-40">
                         <div class="flex justify-between items-center mb-3">
                             <span class="text-[10px] font-black tracking-widest opacity-40 uppercase">WhatsApp</span>
                             <span class="status-badge bg-neutral-100 text-neutral-400 font-black">Soğuk</span>
@@ -278,18 +302,18 @@
     </section>
 
     <!-- Voice Assistant Section -->
-    <section id="voice" class="py-32 bg-neutral-50 section-divider">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-24">
-            <div class="lg:w-1/2 order-2 lg:order-1">
-                <div class="glass-card p-10 rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="flex items-center space-x-5 mb-10">
-                        <div class="w-14 h-14 bg-[#b8cbde]/30 rounded-2xl flex items-center justify-center border border-[#b8cbde]/50">
-                            <svg class="w-7 h-7 text-[#3d5afe]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+    <section id="voice" class="py-20 md:py-32 bg-neutral-50 section-divider">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 md:gap-24">
+            <div class="lg:w-1/2 order-2 lg:order-1 w-full">
+                <div class="glass-card p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden bg-gradient-to-br from-white to-[#b8cbde]/15 w-full">
+                    <div class="flex items-center space-x-4 md:space-x-5 mb-8 md:mb-10">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-[#b8cbde]/30 rounded-2xl flex items-center justify-center border border-[#b8cbde]/50 flex-shrink-0">
+                            <svg class="w-6 h-6 md:w-7 md:h-7 text-[#3d5afe]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-xl text-black tracking-tight">AI Sesli Karşılama</h4>
-                            <div class="flex items-center mt-1 h-[30px]">
-                                <span class="text-green-600 text-[9px] font-black tracking-widest mr-3">CANLI ANALİZ</span>
+                            <h4 class="font-bold text-lg md:text-xl text-black tracking-tight">AI Sesli Karşılama</h4>
+                            <div class="flex items-center mt-1 h-[20px] md:h-[30px]">
+                                <span class="text-green-600 text-[8px] md:text-[9px] font-black tracking-widest mr-2 md:mr-3">CANLI ANALİZ</span>
                                 <div class="wave" style="animation-delay: 0s"></div>
                                 <div class="wave" style="animation-delay: 0.2s"></div>
                                 <div class="wave" style="animation-delay: 0.4s"></div>
@@ -299,29 +323,29 @@
                         </div>
                     </div>
                     
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-white to-[#b8cbde]/20 p-5 rounded-2xl border border-black/5">
-                            <p class="text-[10px] text-neutral-400 mb-2 font-black tracking-widest uppercase">Sekreter (AI):</p>
-                            <p class="text-sm italic text-neutral-700 font-medium">"Merhaba, Assistune kliniğine hoş geldiniz. Sekreterimiz şu an başka bir hastamızla ilgileniyor. Size nasıl yardımcı olabilirim?"</p>
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="bg-gradient-to-br from-white to-[#b8cbde]/20 p-4 md:p-5 rounded-xl md:rounded-2xl border border-black/5">
+                            <p class="text-[9px] md:text-[10px] text-neutral-400 mb-2 font-black tracking-widest uppercase">Sekreter (AI):</p>
+                            <p class="text-xs md:text-sm italic text-neutral-700 font-medium">"Merhaba, Assistune kliniğine hoş geldiniz. Sekreterimiz şu an başka bir hastamızla ilgileniyor. Size nasıl yardımcı olabilirim?"</p>
                         </div>
-                        <div class="bg-gradient-to-br from-white to-[#b8cbde]/30 p-5 rounded-2xl border border-[#b8cbde]/50 text-right">
-                            <p class="text-[10px] text-blue-500 mb-2 font-black tracking-widest uppercase">Hasta:</p>
-                            <p class="text-sm text-neutral-800 font-semibold">"Merhabalar, yarın öğleden sonra hacamat randevusu için uygunluk soracaktım."</p>
+                        <div class="bg-gradient-to-br from-white to-[#b8cbde]/30 p-4 md:p-5 rounded-xl md:rounded-2xl border border-[#b8cbde]/50 text-right">
+                            <p class="text-[9px] md:text-[10px] text-blue-500 mb-2 font-black tracking-widest uppercase">Hasta:</p>
+                            <p class="text-xs md:text-sm text-neutral-800 font-semibold">"Merhabalar, yarın öğleden sonra hacamat randevusu için uygunluk soracaktım."</p>
                         </div>
-                        <div class="pt-6 border-t border-black/5 flex items-center justify-center text-[10px] font-bold text-neutral-400 tracking-wide">
-                            <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            SES VERİSİ METNE DÖNÜŞTÜRÜLDÜ VE CRM'E İŞLENDİ
+                        <div class="pt-4 md:pt-6 border-t border-black/5 flex items-center justify-center text-[9px] md:text-[10px] font-bold text-neutral-400 tracking-wide text-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            METNE DÖNÜŞTÜRÜLDÜ VE CRM'E İŞLENDİ
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="lg:w-1/2 order-1 lg:order-2 pl-4">
-                <div class="inline-block px-5 py-2 mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black text-blue-700 tracking-widest uppercase">
+            <div class="lg:w-1/2 order-1 lg:order-2">
+                <div class="inline-block px-4 md:px-5 py-2 mb-6 md:mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[9px] md:text-[10px] font-black text-blue-700 tracking-widest uppercase">
                     Telefonlarınız Hiç Cevapsız Kalmasın
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-[1.1] text-black tracking-tight">Yapay Zeka Destekli<br>Akıllı Çağrı Yönetimi.</h2>
-                <p class="text-neutral-500 text-lg mb-8 leading-relaxed font-medium">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-10 leading-[1.1] text-black tracking-tight">Yapay Zeka Destekli<br>Akıllı Çağrı Yönetimi.</h2>
+                <p class="text-neutral-500 text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-medium">
                     Sekreteriniz meşgul olduğunda veya mesai saatleri dışında gelen tüm aramaları Assistune AI yanıtlar. Hastalarınızı bekletmez, taleplerini dinler ve tüm konuşmayı analiz ederek anında CRM panelinize özet olarak düşürür.
                 </p>
             </div>
@@ -329,68 +353,68 @@
     </section>
 
     <!-- Omnichannel Chatbot Section -->
-    <section id="chatbot" class="py-32 bg-white section-divider">
+    <section id="chatbot" class="py-20 md:py-32 bg-white section-divider">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
-                <div class="pr-4">
-                    <div class="inline-block px-5 py-2 mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black text-blue-700 tracking-widest uppercase">
+            <div class="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
+                <div class="pr-0 md:pr-4">
+                    <div class="inline-block px-4 md:px-5 py-2 mb-6 md:mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[9px] md:text-[10px] font-black text-blue-700 tracking-widest uppercase">
                         Omnichannel Akıllı Chatbot
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-[1.1] text-black tracking-tight">Mesajları Kazanca<br>Dönüştüren Zeka.</h2>
-                    <p class="text-neutral-500 text-lg mb-12 leading-relaxed font-medium">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-10 leading-[1.1] text-black tracking-tight">Mesajları Kazanca<br>Dönüştüren Zeka.</h2>
+                    <p class="text-neutral-500 text-base md:text-lg mb-8 md:mb-12 leading-relaxed font-medium">
                         WhatsApp ve Instagram'dan gelen tüm mesajlar tek bir panelde toplanır. Yapay zeka, hastanın niyetini saniyeler içinde analiz eder; sadece fiyat sorup gidenlerle, randevu almaya hazır olanları birbirinden ayırır.
                     </p>
                     
-                    <div class="grid gap-8">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white to-[#b8cbde]/30 border border-black/5 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-[#3d5afe]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    <div class="grid gap-6 md:gap-8">
+                        <div class="flex items-start space-x-4 md:space-x-6">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-br from-white to-[#b8cbde]/30 border border-black/5 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 md:w-6 md:h-6 text-[#3d5afe]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2 text-black text-lg">Akıllı Niyet Analizi</h4>
-                                <p class="text-sm text-neutral-500 leading-relaxed font-medium">Hasta fiyat sorduysa ve almaya yakınsa AI bunu algılar ve sekretere "Sıcak Potansiyel Müşteri" bildirimi gönderir.</p>
+                                <h4 class="font-bold mb-1 md:mb-2 text-black text-base md:text-lg">Akıllı Niyet Analizi</h4>
+                                <p class="text-xs md:text-sm text-neutral-500 leading-relaxed font-medium">Hasta fiyat sorduysa ve almaya yakınsa AI bunu algılar ve sekretere "Sıcak Potansiyel Müşteri" bildirimi gönderir.</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white to-[#b8cbde]/30 border border-black/5 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-[#3d5afe]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <div class="flex items-start space-x-4 md:space-x-6">
+                            <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-br from-white to-[#b8cbde]/30 border border-black/5 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 md:w-6 md:h-6 text-[#3d5afe]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2 text-black text-lg">Otomatik AI Özetleri</h4>
-                                <p class="text-sm text-neutral-500 leading-relaxed font-medium">Konuşmaların tamamını okumanıza gerek yok. AI, hastanın geçmişini ve talebini kısa bir özet olarak panele ekler.</p>
+                                <h4 class="font-bold mb-1 md:mb-2 text-black text-base md:text-lg">Otomatik AI Özetleri</h4>
+                                <p class="text-xs md:text-sm text-neutral-500 leading-relaxed font-medium">Konuşmaların tamamını okumanıza gerek yok. AI, hastanın geçmişini ve talebini kısa bir özet olarak panele ekler.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative">
-                    <div class="glass-card rounded-[2.5rem] overflow-hidden border-black/5 shadow-2xl bg-gradient-to-br from-white to-[#b8cbde]/15 p-2">
-                        <div class="bg-gradient-to-br from-[#f8f9fa] to-[#b8cbde]/10 px-8 py-5 border-b border-black/5 flex justify-between items-center rounded-t-[2.2rem]">
-                            <span class="text-[9px] font-black uppercase tracking-[0.2em] text-neutral-400">Gelen Kutusu (Akıllı Filtre)</span>
-                            <div class="flex items-center space-x-3">
+                <div class="relative w-full">
+                    <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-black/5 shadow-2xl bg-gradient-to-br from-white to-[#b8cbde]/15 p-1.5 md:p-2">
+                        <div class="bg-gradient-to-br from-[#f8f9fa] to-[#b8cbde]/10 px-5 md:px-8 py-4 border-b border-black/5 flex justify-between items-center rounded-t-[1.8rem] md:rounded-t-[2.2rem]">
+                            <span class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-neutral-400">Gelen Kutusu (Akıllı Filtre)</span>
+                            <div class="flex items-center space-x-2 md:space-x-3">
                                 <span class="w-2 h-2 rounded-full bg-[#3d5afe] animate-pulse"></span>
-                                <span class="text-[10px] text-[#3d5afe] font-black uppercase tracking-widest">12 YENİ LEAD</span>
+                                <span class="text-[8px] md:text-[10px] text-[#3d5afe] font-black uppercase tracking-widest">12 YENİ LEAD</span>
                             </div>
                         </div>
-                        <div class="p-2">
+                        <div class="p-1 md:p-2">
                             <!-- Lead 1 -->
-                            <div class="p-8 border-b border-black/5 bg-gradient-to-br from-white to-[#b8cbde]/20 rounded-2xl">
-                                <div class="flex justify-between items-start mb-5">
+                            <div class="p-5 md:p-8 border-b border-black/5 bg-gradient-to-br from-white to-[#b8cbde]/20 rounded-xl md:rounded-2xl">
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-5 space-y-2 md:space-y-0">
                                     <div>
-                                        <h5 class="font-bold text-base text-black">Zeynep Demir</h5>
-                                        <div class="flex items-center mt-1.5">
-                                            <svg class="w-3.5 h-3.5 text-[#25D366] mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
-                                            <p class="text-[10px] text-neutral-500 font-bold tracking-tight">WHATSAPP • 2 DK ÖNCE</p>
+                                        <h5 class="font-bold text-sm md:text-base text-black">Zeynep Demir</h5>
+                                        <div class="flex items-center mt-1 md:mt-1.5">
+                                            <svg class="w-3.5 h-3.5 text-[#25D366] mr-1.5 md:mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+                                            <p class="text-[9px] md:text-[10px] text-neutral-500 font-bold tracking-tight">WHATSAPP • 2 DK ÖNCE</p>
                                         </div>
                                     </div>
-                                    <span class="status-badge bg-orange-100 text-orange-600 border border-orange-200 font-black">SICAK LEAD 🔥</span>
+                                    <span class="status-badge self-start bg-orange-100 text-orange-600 border border-orange-200 font-black">SICAK LEAD 🔥</span>
                                 </div>
-                                <div class="bg-gradient-to-br from-white to-[#b8cbde]/30 p-4 rounded-xl border border-black/5 mb-5">
-                                    <p class="text-xs text-neutral-600 leading-relaxed italic font-medium">"Botoks ve dolgu fiyatlarını sordu. Daha önce başka bir yerde yaptırmış, sonuçtan memnun kalmamış. Hemen randevu istiyor."</p>
+                                <div class="bg-gradient-to-br from-white to-[#b8cbde]/30 p-3 md:p-4 rounded-xl border border-black/5 mb-4 md:mb-5">
+                                    <p class="text-[11px] md:text-xs text-neutral-600 leading-relaxed italic font-medium">"Botoks ve dolgu fiyatlarını sordu. Daha önce başka bir yerde yaptırmış, sonuçtan memnun kalmamış. Hemen randevu istiyor."</p>
                                 </div>
-                                <div class="flex space-x-3">
-                                    <span class="text-[9px] bg-blue-100 text-blue-600 px-3 py-1.5 rounded-lg font-black uppercase tracking-widest">Fiyat Sordu</span>
-                                    <span class="text-[9px] bg-blue-100 text-blue-600 px-3 py-1.5 rounded-lg font-black uppercase tracking-widest">Almaya Yakın</span>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-[8px] md:text-[9px] bg-blue-100 text-blue-600 px-2.5 py-1.5 rounded-lg font-black uppercase tracking-widest">Fiyat Sordu</span>
+                                    <span class="text-[8px] md:text-[9px] bg-blue-100 text-blue-600 px-2.5 py-1.5 rounded-lg font-black uppercase tracking-widest">Almaya Yakın</span>
                                 </div>
                             </div>
                         </div>
@@ -401,63 +425,63 @@
     </section>
 
     <!-- AI İkiz Section -->
-    <section id="ai-twin" class="py-32 bg-neutral-50/50 section-divider">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-24">
-            <div class="lg:w-1/2 pr-4 order-1">
-                <div class="inline-block px-5 py-2 mb-8 rounded-full border border-purple-500/10 bg-purple-50 text-[10px] font-black text-purple-600 tracking-widest uppercase">
+    <section id="ai-twin" class="py-20 md:py-32 bg-neutral-50/50 section-divider">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 md:gap-24">
+            <div class="lg:w-1/2 pr-0 md:pr-4 order-1 w-full">
+                <div class="inline-block px-4 md:px-5 py-2 mb-6 md:mb-8 rounded-full border border-purple-500/10 bg-purple-50 text-[9px] md:text-[10px] font-black text-purple-600 tracking-widest uppercase">
                     7/24 Dijital Temsilciniz
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-10 leading-[1.1] text-black tracking-tight">Size Özel Eğitilmiş<br>"AI İkiz" Profili.</h2>
-                <p class="text-neutral-500 text-lg mb-8 leading-relaxed font-medium">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-10 leading-[1.1] text-black tracking-tight">Size Özel Eğitilmiş<br>"AI İkiz" Profili.</h2>
+                <p class="text-neutral-500 text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-medium">
                     Hastalarınızdan gelen yüzlerce soruya yetişemiyor musunuz? Size özel oluşturduğumuz alt alan adında (örn: drvildan.assistune.ai), KVKK uyumlu ve sadece sizin verilerinizle eğitilmiş Yapay Zeka İkiziniz hastalarınızı karşılıyor.
                 </p>
-                <div class="bg-purple-50/50 border border-purple-100 p-6 rounded-2xl">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        <h4 class="font-bold text-black text-sm">Instagram Lansman Desteği</h4>
+                <div class="bg-purple-50/50 border border-purple-100 p-5 md:p-6 rounded-xl md:rounded-2xl">
+                    <div class="flex items-center space-x-3 mb-3 md:mb-4">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <h4 class="font-bold text-black text-xs md:text-sm">Instagram Lansman Desteği</h4>
                     </div>
-                    <p class="text-sm text-neutral-600 leading-relaxed font-medium italic">
+                    <p class="text-xs md:text-sm text-neutral-600 leading-relaxed font-medium italic">
                         "Ben AI Dr. Vildan Özdoğan. Artık 7/24 sorularınıza yanıt vereceğim, profildeki linkten bana ulaşabilirsiniz!"
                     </p>
-                    <p class="text-xs text-neutral-500 mt-4 pt-4 border-t border-purple-200 font-medium">
+                    <p class="text-[11px] md:text-xs text-neutral-500 mt-3 md:mt-4 pt-3 md:pt-4 border-t border-purple-200 font-medium">
                         Sizin için hazırladığımız özel AI video içerikleriyle, hastalarınızı doğrudan profilinizdeki dijital ikizinize yönlendiriyoruz.
                     </p>
                 </div>
             </div>
 
-            <div class="lg:w-1/2 order-2 relative pl-4 lg:pl-0">
+            <div class="lg:w-1/2 order-2 relative pl-0 lg:pl-4 w-full">
                 <!-- Image Wrapper -->
-                <div class="glass-card rounded-[2.5rem] overflow-hidden border-black/5 shadow-2xl relative">
+                <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-black/5 shadow-2xl relative">
                     <!-- Placeholder Doctor Image -->
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elleri kenetlenmiş AI Doktor" class="w-full h-[550px] object-cover" />
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elleri kenetlenmiş AI Doktor" class="w-full h-[400px] md:h-[550px] object-cover" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                     
                     <!-- Top Domain Bar -->
-                    <div class="absolute top-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl px-5 py-4 flex items-center justify-between border border-white/20 shadow-lg">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span class="text-sm font-bold text-black tracking-wide">drvildan.assistune.ai</span>
+                    <div class="absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl px-4 py-3 md:px-5 md:py-4 flex items-center justify-between border border-white/20 shadow-lg">
+                        <div class="flex items-center space-x-2 md:space-x-3">
+                            <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            <span class="text-xs md:text-sm font-bold text-black tracking-wide">drvildan.assistune.ai</span>
                         </div>
-                        <span class="text-[9px] bg-green-100 text-green-700 px-3 py-1.5 rounded-lg font-black tracking-widest uppercase">KVKK Uyumlu</span>
+                        <span class="text-[8px] md:text-[9px] bg-green-100 text-green-700 px-2 md:px-3 py-1 md:py-1.5 rounded-lg font-black tracking-widest uppercase">KVKK Uyumlu</span>
                     </div>
 
                     <!-- Chat UI Overlay -->
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <div class="space-y-4">
+                    <div class="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
+                        <div class="space-y-3 md:space-y-4">
                             <!-- Patient -->
                             <div class="flex justify-end">
-                                <div class="bg-gradient-to-br from-white to-[#b8cbde]/20 backdrop-blur-md px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] shadow-xl border border-white/50">
-                                    <p class="text-sm text-neutral-800 font-semibold">Hocam, botoks sonrası ne zaman yüzümü yıkayabilirim?</p>
+                                <div class="bg-gradient-to-br from-white to-[#b8cbde]/20 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 rounded-2xl rounded-tr-sm max-w-[90%] md:max-w-[85%] shadow-xl border border-white/50">
+                                    <p class="text-xs md:text-sm text-neutral-800 font-semibold">Hocam, botoks sonrası ne zaman yüzümü yıkayabilirim?</p>
                                 </div>
                             </div>
                             <!-- AI Twin -->
                             <div class="flex justify-start">
-                                <div class="bg-purple-600/95 backdrop-blur-md px-5 py-4 rounded-2xl rounded-tl-sm max-w-[95%] shadow-xl border border-purple-500/50">
-                                    <div class="flex items-center space-x-2 mb-2">
-                                        <span class="w-2 h-2 rounded-full bg-green-400"></span>
-                                        <span class="text-[10px] text-purple-200 font-bold tracking-wider">AI DR. VİLDAN</span>
+                                <div class="bg-purple-600/95 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 rounded-2xl rounded-tl-sm max-w-[95%] shadow-xl border border-purple-500/50">
+                                    <div class="flex items-center space-x-2 mb-1.5 md:mb-2">
+                                        <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400"></span>
+                                        <span class="text-[8px] md:text-[10px] text-purple-200 font-bold tracking-wider">AI DR. VİLDAN</span>
                                     </div>
-                                    <p class="text-sm text-white font-medium leading-relaxed">Merhaba! Botoks işleminden sonra ilk 6 saat su temasından ve makyajdan kaçınmanızı öneriyorum. Şişlik olursa hafif soğuk kompres yapabilirsiniz. Yüz yüze görüşmek isterseniz randevu oluşturabilirim. 😊</p>
+                                    <p class="text-[11px] md:text-sm text-white font-medium leading-relaxed">Merhaba! Botoks işleminden sonra ilk 6 saat su temasından ve makyajdan kaçınmanızı öneriyorum. Şişlik olursa hafif soğuk kompres yapabilirsiniz. Yüz yüze görüşmek isterseniz randevu oluşturabilirim. 😊</p>
                                 </div>
                             </div>
                         </div>
@@ -468,215 +492,215 @@
     </section>
 
     <!-- Features Grid -->
-    <section id="features" class="py-32 bg-neutral-50 section-divider">
+    <section id="features" class="py-20 md:py-32 bg-neutral-50 section-divider">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24 text-black px-4">
-                <h2 class="text-4xl font-bold mb-8 tracking-tight">Operasyonel Mükemmellik.</h2>
-                <p class="text-neutral-500 max-w-xl mx-auto text-lg font-medium">Assistune sadece bir chatbot değildir; kliniğinizin dijital satış ve filtreleme merkezidir.</p>
+            <div class="text-center mb-16 md:mb-24 text-black px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 tracking-tight">Operasyonel Mükemmellik.</h2>
+                <p class="text-neutral-500 max-w-xl mx-auto text-base md:text-lg font-medium">Assistune sadece bir chatbot değildir; kliniğinizin dijital satış ve filtreleme merkezidir.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                 <!-- 1. Akıllı Ön Filtreleme -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-blue-500 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-blue-500 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Akıllı Ön Filtreleme</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">WhatsApp ve Instagram'dan gelen mesajları önce bot yanıtlar, gereksiz soruları eler ve sadece sıcak fırsatları ekibinize iletir.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Akıllı Ön Filtreleme</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">WhatsApp ve Instagram'dan gelen mesajları önce bot yanıtlar, gereksiz soruları eler ve sadece sıcak fırsatları ekibinize iletir.</p>
                 </div>
                 
                 <!-- 2. AI Özetleri -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-orange-500 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-orange-500 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Otomatik Hasta Özetleri</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">Uzun konuşmaları okumayı bırakın. AI, hastanın niyetini ve kritik detaylarını saniyeler içinde özetleyip önünüze koyar.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Otomatik Hasta Özetleri</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">Uzun konuşmaları okumayı bırakın. AI, hastanın niyetini ve kritik detaylarını saniyeler içinde özetleyip önünüze koyar.</p>
                 </div>
 
                 <!-- 3. Markaya Özel AI İkiz -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-purple-500 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-purple-500 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Markanıza Özel AI İkiz</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">Kliniğinizin tonunu ve tarzını yansıtan, sadece sizin verilerinizle donatılmış prestijli bir dijital asistan karakteri oluşturun.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Markanıza Özel AI İkiz</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">Kliniğinizin tonunu ve tarzını yansıtan, sadece sizin verilerinizle donatılmış prestijli bir dijital asistan karakteri oluşturun.</p>
                 </div>
 
                 <!-- 4. Dinamik Kampanya -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-pink-500 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-pink-500 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Dinamik Kampanya Yönetimi</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">Dönemsel kampanyaları ve geçici fiyatlandırmaları panele işleyin. Yapay zeka bu teklifleri anında müşterilerle buluştursun.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Dinamik Kampanya Yönetimi</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">Dönemsel kampanyaları ve geçici fiyatlandırmaları panele işleyin. Yapay zeka bu teklifleri anında müşterilerle buluştursun.</p>
                 </div>
 
                 <!-- 5. Kendi Kendine Öğrenen SSS -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-indigo-500 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-indigo-500 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Akıllı SSS Öğrenimi</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">Sıkça sorulan sorularınızı sisteme ekleyin. Yapay zekamız bu verilerden öğrenerek hastalara her zaman en doğru yanıtı versin.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Akıllı SSS Öğrenimi</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">Sıkça sorulan sorularınızı sisteme ekleyin. Yapay zekamız bu verilerden öğrenerek hastalara her zaman en doğru yanıtı versin.</p>
                 </div>
 
                 <!-- 6. Kill Switch -->
-                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
-                    <div class="text-green-600 mb-8">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <div class="glass-card p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15">
+                    <div class="text-green-600 mb-6 md:mb-8">
+                        <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-5 text-black tracking-tight">Kill Switch Güvencesi</h4>
-                    <p class="text-neutral-500 text-sm leading-relaxed font-medium">Kontrol her zaman sizde. İhtiyacınız olduğunda tek bir tıkla tüm botları durdurup sistemi %100 manuel asistan moduna çekebilirsiniz.</p>
+                    <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-5 text-black tracking-tight">Kill Switch Güvencesi</h4>
+                    <p class="text-neutral-500 text-xs md:text-sm leading-relaxed font-medium">Kontrol her zaman sizde. İhtiyacınız olduğunda tek bir tıkla tüm botları durdurup sistemi %100 manuel asistan moduna çekebilirsiniz.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Security Section -->
-    <section id="security" class="py-32 bg-white">
-        <div class="max-w-4xl mx-auto text-center glass-card p-16 rounded-[3rem] border-[#b8cbde]/30 bg-gradient-to-br from-white to-[#b8cbde]/15 shadow-xl">
-            <div class="inline-flex items-center space-x-3 text-green-600 font-black mb-8">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
-                <span class="text-[10px] uppercase tracking-[0.3em]">Güvenlik ve KVKK</span>
+    <section id="security" class="py-20 md:py-32 bg-white">
+        <div class="max-w-4xl mx-auto text-center glass-card p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] border-[#b8cbde]/30 bg-gradient-to-br from-white to-[#b8cbde]/15 shadow-xl mx-4 md:mx-auto">
+            <div class="inline-flex items-center space-x-2 md:space-x-3 text-green-600 font-black mb-6 md:mb-8">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
+                <span class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em]">Güvenlik ve KVKK</span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-black tracking-tight">Hasta Verileriniz Güvende.</h2>
-            <p class="text-neutral-500 mb-12 text-lg leading-relaxed font-medium">
+            <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-black tracking-tight">Hasta Verileriniz Güvende.</h2>
+            <p class="text-neutral-500 mb-10 md:mb-12 text-base md:text-lg leading-relaxed font-medium">
                 Assistune, verilerinizi Türkiye'deki yerel sunucularda barındırır. KVKK uyumlu altyapısı ve uçtan uca şifreleme protokolleri ile hastalarınızın gizliliği bizim önceliğimizdir.
             </p>
-            <div class="flex flex-wrap justify-center gap-10 md:gap-16 opacity-40 text-black">
-                <div class="font-black text-[10px] tracking-widest uppercase">KVKK UYUMLU</div>
-                <div class="font-black text-[10px] tracking-widest uppercase">SSL SECURE</div>
-                <div class="font-black text-[10px] tracking-widest uppercase">7/24 MONITORING</div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-16 opacity-40 text-black">
+                <div class="font-black text-[9px] md:text-[10px] tracking-widest uppercase">KVKK UYUMLU</div>
+                <div class="font-black text-[9px] md:text-[10px] tracking-widest uppercase">SSL SECURE</div>
+                <div class="font-black text-[9px] md:text-[10px] tracking-widest uppercase">7/24 MONITORING</div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-32 bg-neutral-50 section-divider">
+    <section id="pricing" class="py-20 md:py-32 bg-neutral-50 section-divider">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
-            <div class="text-center mb-24 text-black">
-                <div class="inline-block px-5 py-2 mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black text-blue-700 tracking-widest uppercase">
+            <div class="text-center mb-16 md:mb-24 text-black">
+                <div class="inline-block px-4 md:px-5 py-2 mb-6 md:mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[9px] md:text-[10px] font-black text-blue-700 tracking-widest uppercase">
                     Şeffaf Fiyatlandırma
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Kliniğiniz İçin En Uygun<br>Yatırımı Seçin.</h2>
-                <p class="text-neutral-500 max-w-xl mx-auto text-lg font-medium">Gizli maliyet yok. Sadece ihtiyacınız olan özelliklere ödeme yapın.</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 md:mb-8 tracking-tight">Kliniğiniz İçin En Uygun<br>Yatırımı Seçin.</h2>
+                <p class="text-neutral-500 max-w-xl mx-auto text-base md:text-lg font-medium">Gizli maliyet yok. Sadece ihtiyacınız olan özelliklere ödeme yapın.</p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
                 
                 <!-- Standart Paket -->
-                <div class="glass-card rounded-[2.5rem] p-10 bg-gradient-to-br from-white to-[#b8cbde]/15 flex flex-col relative border border-[#b8cbde]/20">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-black mb-2 tracking-tight">Standart Paket</h3>
-                        <p class="text-sm text-neutral-500 font-medium h-10">Temel mesaj yönetimi ve asistanlık.</p>
+                <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 bg-gradient-to-br from-white to-[#b8cbde]/15 flex flex-col relative border border-[#b8cbde]/20">
+                    <div class="mb-6 md:mb-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-black mb-2 tracking-tight">Standart Paket</h3>
+                        <p class="text-xs md:text-sm text-neutral-500 font-medium h-10">Temel mesaj yönetimi ve asistanlık.</p>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold text-black tracking-tighter">9.000</span>
-                        <span class="text-sm font-bold text-neutral-400">₺ / Ay</span>
+                    <div class="mb-6 md:mb-8">
+                        <span class="text-3xl md:text-4xl font-bold text-black tracking-tighter">9.000</span>
+                        <span class="text-xs md:text-sm font-bold text-neutral-400">₺ / Ay</span>
                     </div>
-                    <div class="flex-grow space-y-5 mb-10">
+                    <div class="flex-grow space-y-4 md:space-y-5 mb-8 md:mb-10">
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">AI Chatbot</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">AI Chatbot</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">Lead Yönetimi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Lead Yönetimi</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">Performans Analizi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Performans Analizi</span>
                         </div>
                         <div class="flex items-start opacity-30">
-                            <svg class="w-5 h-5 text-neutral-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium line-through">Sesli Asistan</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-neutral-400 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium line-through">Sesli Asistan</span>
                         </div>
                         <div class="flex items-start opacity-30">
-                            <svg class="w-5 h-5 text-neutral-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium line-through">AI İkiz (Özelleştirilmiş Persona)</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-neutral-400 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium line-through">AI İkiz (Özelleştirilmiş Persona)</span>
                         </div>
                     </div>
-                    <button class="w-full py-4 rounded-full border border-black/10 hover:bg-[#b8cbde]/10 text-black font-bold transition-all mt-auto">Seçimi Yap</button>
+                    <button class="w-full py-3 md:py-4 rounded-full border border-black/10 hover:bg-[#b8cbde]/10 text-black text-sm md:text-base font-bold transition-all mt-auto">Seçimi Yap</button>
                 </div>
 
                 <!-- İletişim Paketi (Vurgulanan) -->
-                <div class="glass-card rounded-[2.5rem] p-10 bg-black text-white flex flex-col relative transform lg:-translate-y-4 shadow-2xl shadow-black/20 border-black">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#3d5afe] text-white px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase whitespace-nowrap">
+                <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 bg-black text-white flex flex-col relative transform lg:-translate-y-4 shadow-2xl shadow-black/20 border-black mt-6 md:mt-0">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#3d5afe] text-white px-3 md:px-4 py-1 rounded-full text-[9px] md:text-[10px] font-black tracking-widest uppercase whitespace-nowrap">
                         En Çok Tercih Edilen
                     </div>
-                    <div class="mb-8 mt-2">
-                        <h3 class="text-2xl font-bold mb-2 tracking-tight">İletişim Paketi</h3>
-                        <p class="text-sm text-neutral-400 font-medium h-10">Tüm iletişim kanallarında tam kontrol.</p>
+                    <div class="mb-6 md:mb-8 mt-2">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2 tracking-tight">İletişim Paketi</h3>
+                        <p class="text-xs md:text-sm text-neutral-400 font-medium h-10">Tüm iletişim kanallarında tam kontrol.</p>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold tracking-tighter">13.000</span>
-                        <span class="text-sm font-bold text-neutral-500">₺ / Ay</span>
+                    <div class="mb-6 md:mb-8">
+                        <span class="text-3xl md:text-4xl font-bold tracking-tighter">13.000</span>
+                        <span class="text-xs md:text-sm font-bold text-neutral-500">₺ / Ay</span>
                     </div>
-                    <div class="flex-grow space-y-5 mb-10">
+                    <div class="flex-grow space-y-4 md:space-y-5 mb-8 md:mb-10">
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-[#3d5afe] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-200 font-medium">AI Chatbot</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-[#3d5afe] mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-200 font-medium">AI Chatbot</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-[#3d5afe] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-200 font-medium">Lead Yönetimi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-[#3d5afe] mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-200 font-medium">Lead Yönetimi</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-[#3d5afe] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-200 font-medium">Performans Analizi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-[#3d5afe] mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-200 font-medium">Performans Analizi</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-[#3d5afe] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-white font-bold">Sesli Asistan</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-[#3d5afe] mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-white font-bold">Sesli Asistan</span>
                         </div>
                         <div class="flex items-start opacity-30">
-                            <svg class="w-5 h-5 text-neutral-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            <span class="text-sm text-neutral-400 font-medium line-through">AI İkiz (Özelleştirilmiş Persona)</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-neutral-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-400 font-medium line-through">AI İkiz (Persona)</span>
                         </div>
                     </div>
-                    <button class="cta-button w-full py-4 rounded-full bg-[#3d5afe] text-white font-bold transition-all mt-auto border-none">Hemen Başla</button>
+                    <button class="cta-button w-full py-3 md:py-4 rounded-full bg-[#3d5afe] text-white text-sm md:text-base font-bold transition-all mt-auto border-none">Hemen Başla</button>
                 </div>
 
                 <!-- Tam Profesyonel Paket -->
-                <div class="glass-card rounded-[2.5rem] p-10 bg-gradient-to-br from-white to-[#b8cbde]/20 flex flex-col relative border border-[#3d5afe]/30">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-black mb-2 tracking-tight">Tam Profesyonel</h3>
-                        <p class="text-sm text-neutral-500 font-medium h-10">Klinik markanıza özel, sınırsız AI deneyimi.</p>
+                <div class="glass-card rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 bg-gradient-to-br from-white to-[#b8cbde]/20 flex flex-col relative border border-[#3d5afe]/30 mt-6 md:mt-0">
+                    <div class="mb-6 md:mb-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-black mb-2 tracking-tight">Tam Profesyonel</h3>
+                        <p class="text-xs md:text-sm text-neutral-500 font-medium h-10">Klinik markanıza özel, sınırsız AI deneyimi.</p>
                     </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold text-black tracking-tighter">20.000</span>
-                        <span class="text-sm font-bold text-neutral-400">₺ / Ay</span>
+                    <div class="mb-6 md:mb-8">
+                        <span class="text-3xl md:text-4xl font-bold text-black tracking-tighter">20.000</span>
+                        <span class="text-xs md:text-sm font-bold text-neutral-400">₺ / Ay</span>
                     </div>
-                    <div class="flex-grow space-y-5 mb-10">
+                    <div class="flex-grow space-y-4 md:space-y-5 mb-8 md:mb-10">
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">AI Chatbot</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">AI Chatbot</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">Lead Yönetimi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Lead Yönetimi</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">Performans Analizi</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Performans Analizi</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-neutral-700 font-medium">Sesli Asistan</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-green-500 mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-neutral-700 font-medium">Sesli Asistan</span>
                         </div>
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-[#3d5afe] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="text-sm text-black font-bold">AI İkiz (Özelleştirilmiş Persona)</span>
+                            <svg class="w-4 h-4 md:w-5 md:h-5 text-[#3d5afe] mr-2.5 md:mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-xs md:text-sm text-black font-bold">AI İkiz (Özelleştirilmiş Persona)</span>
                         </div>
                     </div>
-                    <button class="w-full py-4 rounded-full border border-black/10 hover:bg-[#b8cbde]/10 text-black font-bold transition-all mt-auto">İletişime Geç</button>
+                    <button class="w-full py-3 md:py-4 rounded-full border border-black/10 hover:bg-[#b8cbde]/10 text-black text-sm md:text-base font-bold transition-all mt-auto">İletişime Geç</button>
                 </div>
             </div>
 
             <!-- Kurulum Ücreti Bilgisi -->
-            <div class="mt-16 max-w-3xl mx-auto p-6 bg-[#b8cbde]/20 border border-[#b8cbde]/50 rounded-2xl flex items-center justify-center space-x-4">
-                <svg class="w-6 h-6 text-[#3d5afe] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <p class="text-sm text-neutral-600 font-medium">
+            <div class="mt-12 md:mt-16 max-w-3xl mx-auto p-5 md:p-6 bg-[#b8cbde]/20 border border-[#b8cbde]/50 rounded-2xl flex items-center justify-center space-x-3 md:space-x-4">
+                <svg class="w-5 h-5 md:w-6 md:h-6 text-[#3d5afe] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-xs md:text-sm text-neutral-600 font-medium text-left">
                     Tüm paketlerde sisteme entegrasyon, özel eğitim ve <span class="font-bold text-black">tek seferlik 7.000 ₺ kurulum ücreti</span> bulunmaktadır.
                 </p>
             </div>
@@ -684,69 +708,70 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-32 text-center bg-white section-divider">
-        <h2 class="hero-title font-bold mb-10 gradient-text">Kliniğinizi Otopilota Alın.</h2>
-        <p class="text-neutral-500 mb-14 max-w-xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+    <section class="py-20 md:py-32 text-center bg-white section-divider">
+        <h2 class="hero-title font-bold mb-8 md:mb-10 gradient-text">Kliniğinizi Otopilota Alın.</h2>
+        <p class="text-neutral-500 mb-10 md:mb-14 max-w-xl mx-auto text-base md:text-xl font-medium leading-relaxed px-4">
             Gereksiz mesajları yapay zekaya, randevuları uzman ekibinize bırakın. Verimlilik devrimini bugün başlatın.
         </p>
-        <a href="#contact" class="inline-block cta-button bg-[#3d5afe] text-white px-14 py-6 rounded-full text-xl font-bold shadow-xl">Ücretsiz Demoyu Başlatın</a>
-        <p class="mt-10 text-neutral-400 text-xs font-bold tracking-widest uppercase">Kurulum gerektirmez. Hemen başlayın.</p>
+        <a href="#contact" class="inline-block cta-button bg-[#3d5afe] text-white px-10 md:px-14 py-4 md:py-6 rounded-full text-lg md:text-xl font-bold shadow-xl mx-4">Ücretsiz Demoyu Başlatın</a>
+        <p class="mt-8 md:mt-10 text-neutral-400 text-[10px] md:text-xs font-bold tracking-widest uppercase">Kurulum gerektirmez. Hemen başlayın.</p>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-32 bg-neutral-50 section-divider">
+    <section id="contact" class="py-20 md:py-32 bg-neutral-50 section-divider">
         <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block px-5 py-2 mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[10px] font-black text-blue-700 tracking-widest uppercase">
+            <div class="text-center mb-12 md:mb-16">
+                <div class="inline-block px-4 md:px-5 py-2 mb-6 md:mb-8 rounded-full border border-[#b8cbde]/50 bg-[#b8cbde]/20 text-[9px] md:text-[10px] font-black text-blue-700 tracking-widest uppercase">
                     Bize Ulaşın
                 </div>
-                <h2 class="text-4xl font-bold mb-6 text-black tracking-tight">Demo İçin Bilgilerinizi Bırakın.</h2>
-                <p class="text-neutral-500 text-lg font-medium">Sizi yakından tanımak ve kliniğinize özel çözümlerimizi anlatmak için sabırsızlanıyoruz.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-black tracking-tight">Demo İçin Bilgilerinizi Bırakın.</h2>
+                <p class="text-neutral-500 text-base md:text-lg font-medium">Sizi yakından tanımak ve kliniğinize özel çözümlerimizi anlatmak için sabırsızlanıyoruz.</p>
             </div>
-            <div class="glass-card p-10 md:p-14 rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/20">
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 md:p-14 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/20">
+                <form class="space-y-5 md:space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                         <div>
-                            <label class="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">İsim Soyisim</label>
-                            <input type="text" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-5 py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="Dr. Vildan Özdoğan" required>
+                            <label class="block text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2 md:mb-3">İsim Soyisim</label>
+                            <input type="text" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="Dr. Vildan Özdoğan" required>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">E-posta</label>
-                            <input type="email" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-5 py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="vildan@klinik.com" required>
+                            <label class="block text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2 md:mb-3">E-posta</label>
+                            <input type="email" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="vildan@klinik.com" required>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">Telefon Numarası</label>
-                        <input type="tel" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-5 py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="0555 555 55 55" required>
+                        <label class="block text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2 md:mb-3">Telefon Numarası</label>
+                        <input type="tel" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all" placeholder="0555 555 55 55" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-neutral-500 uppercase tracking-widest mb-3">Kısaca Bilgi Veriniz</label>
-                        <textarea rows="4" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-5 py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all resize-none" placeholder="Örn: 2 kişilik bir ekibiz, Whatsapp'tan çok soru geliyor..." required></textarea>
+                        <label class="block text-[10px] md:text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2 md:mb-3">Kısaca Bilgi Veriniz</label>
+                        <textarea rows="4" class="w-full bg-gradient-to-br from-white to-[#b8cbde]/15 border border-[#b8cbde]/40 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[#b8cbde] transition-all resize-none" placeholder="Örn: 2 kişilik bir ekibiz, Whatsapp'tan çok soru geliyor..." required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-[#3d5afe] text-white py-5 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all mt-4">Demo Talebini Gönder</button>
+                    <button type="submit" class="w-full bg-[#3d5afe] text-white py-4 md:py-5 rounded-xl font-bold text-base md:text-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all mt-2 md:mt-4">Demo Talebini Gönder</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 bg-white border-t border-black/5">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 md:px-16">
-            <a href="#" class="block mb-10 md:mb-0 flex-shrink-0">
+    <footer class="py-12 md:py-16 bg-white border-t border-black/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 md:px-16 text-center md:text-left">
+            <a href="#" class="block mb-8 md:mb-0 flex-shrink-0">
                 <img src="Logo.png" alt="Assistune Logo" class="h-8 md:h-10 w-auto object-contain">
             </a>
-            <div class="flex space-x-12 text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em]">
+            <div class="flex flex-wrap justify-center gap-6 md:space-x-12 text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-8 md:mb-0">
                 <a href="#" class="hover:text-black transition-colors">Şartlar</a>
                 <a href="#" class="hover:text-black transition-colors">Gizlilik</a>
-                <a href="#" class="hover:text-black transition-colors">İletişim</a>
+                <a href="#contact" class="hover:text-black transition-colors">İletişim</a>
             </div>
-            <div class="mt-10 md:mt-0 text-[10px] text-neutral-400 font-bold tracking-widest uppercase">
+            <div class="text-[10px] text-neutral-400 font-bold tracking-widest uppercase">
                 © 2025 Assistune AI Intelligence.
             </div>
         </div>
     </footer>
 
     <script>
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -759,6 +784,24 @@
                 }
             });
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
     </script>
 </body>
 </html>
