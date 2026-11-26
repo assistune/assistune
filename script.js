@@ -1,146 +1,99 @@
 /**
- * Assistune Modern AI Automation - Core Logic
+ * Assistune site: mobile menu + demo form.
+ *
+ * The demo form posts to a Cloudflare Worker that forwards the request to a
+ * Telegram chat. The Telegram bot token lives only in the Worker's secrets,
+ * never in this file. See telegram-worker/README.md for setup.
  */
+
+// Set this to your Worker's URL after deploying it, e.g.
+// 'https://assistune-form.<your-subdomain>.workers.dev'
+const FORM_ENDPOINT = '';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    initROI();
-    initContactForm();
+    initMobileMenu();
+    initDemoForm();
 });
 
-/**
- * Theme Management (Dark/Light Mode)
- */
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    const themeIcon = document.getElementById('theme-icon');
-    if (themeIcon) {
-        themeIcon.innerText = savedTheme === 'dark' ? '🌙' : '☀️';
-    }
+function initMobileMenu() {
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (!toggle || !links) return;
+
+    const setOpen = (open) => {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    };
+
+    toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
 }
 
-function toggleDarkMode() {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    const themeIcon = document.getElementById('theme-icon');
-    if (themeIcon) {
-        themeIcon.innerText = isDark ? '🌙' : '☀️';
-    }
-}
+function initDemoForm() {
+    const form = document.getElementById('demo-form');
+    const button = document.getElementById('demo-submit');
+    const status = document.getElementById('form-status');
+    if (!form || !button || !status) return;
 
-/**
- * FAQ Accordion Toggle
- */
-function toggleFaq(element) {
-    const isActive = element.classList.contains('active');
-    
-    // Close all other FAQ items
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-    });
-
-    // If the clicked one wasn't active, open it
-    if (!isActive) {
-        element.classList.add('active');
-    }
-}
-
-/**
- * ROI Calculator Logic (5.312.500 Target Math)
- */
-function initROI() {
-    const dailyInput = document.getElementById('dailyTotal');
-    const rangeValue = document.getElementById('rangeValue');
-    const customerValue = document.getElementById('customerValue');
-    
-    const yearlyLossDisplay = document.getElementById('yearlyLoss');
-    const aiRecoveryDisplay = document.getElementById('aiRecovery');
-    const lossPercentDisplay = document.getElementById('lossPercent');
-    const recoveryPercentDisplay = document.getElementById('recoveryPercent');
-    const recoveryBar = document.getElementById('recoveryBar');
-
-    if (!dailyInput || !customerValue) return;
-
-    function updateAnalysis() {
-        const total = parseInt(dailyInput.value); 
-        const val = parseInt(customerValue.value) || 0;
-        rangeValue.innerText = total.toLocaleString('tr-TR');
-
-        // Logic: 25% Miss Rate, 12 Months
-        const monthlyLoss = total * 0.25 * val;
-        const yearlyLoss = monthlyLoss * 12;
-        const monthlyRecovery = monthlyLoss * 0.85; // 85% AI Recovery
-        const aiRecoveryYearly = monthlyRecovery * 10; // 10-month conservative cycle
-        
-        yearlyLossDisplay.innerText = yearlyLoss.toLocaleString('tr-TR');
-        aiRecoveryDisplay.innerText = aiRecoveryYearly.toLocaleString('tr-TR');
-        lossPercentDisplay.innerText = "₺" + monthlyLoss.toLocaleString('tr-TR');
-        recoveryPercentDisplay.innerText = "₺" + monthlyRecovery.toLocaleString('tr-TR');
-
-        if (recoveryBar) {
-            setTimeout(() => { recoveryBar.style.width = "85%"; }, 100);
-        }
-    }
-
-    dailyInput.addEventListener('input', updateAnalysis);
-    customerValue.addEventListener('input', updateAnalysis);
-    updateAnalysis();
-}
-
-/**
- * Contact Form & n8n Webhook Submission
- */
-function initContactForm() {
-    const form = document.getElementById('assistuneContactForm');
-    const btn = document.getElementById('submitBtn');
-    const loader = document.getElementById('loader');
-
-    if (!form) return;
+    const show = (text, kind) => {
+        status.textContent = text;
+        status.className = 'form-status' + (kind ? ' ' + kind : '');
+    };
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const WEBHOOK_URL = 'https://n8n.bosphorusspace.com/webhook-test/2eb11a4c-3572-4283-9101-287730632243';
-        
+
+        const data = Object.fromEntries(new FormData(form).entries());
+        const required = ['name', 'phone'];
+        let firstInvalid = null;
+
+        required.forEach((name) => {
+            const input = form.elements[name];
+            const empty = !String(data[name] || '').trim();
+            input.setAttribute('aria-invalid', empty ? 'true' : 'false');
+            if (empty && !firstInvalid) firstInvalid = input;
+        });
+
+        if (firstInvalid) {
+            show('Lütfen adınızı ve telefon numaranızı yazın.', 'err');
+            firstInvalid.focus();
+            return;
+        }
+        if (!form.elements.consent.checked) {
+            show('Devam etmek için onay kutusunu işaretleyin.', 'err');
+            return;
+        }
+        if (!FORM_ENDPOINT) {
+            show('Form şu an bakımda. Lütfen daha sonra tekrar deneyin.', 'err');
+            return;
+        }
+
+        button.disabled = true;
+        show('Gönderiliyor…');
+
         try {
-            btn.disabled = true;
-            if (loader) loader.classList.remove('hidden');
-            
-            const response = await fetch(WEBHOOK_URL, {
+            const res = await fetch(FORM_ENDPOINT, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: document.getElementById('name').value,
-                    business: document.getElementById('business').value,
-                    phone: document.getElementById('phone').value,
-                    message: document.getElementById('message').value,
-                    timestamp: new Date().toISOString()
+                    name: data.name,
+                    phone: data.phone,
+                    organization: data.organization || '',
+                    role: data.role || '',
+                    instagram: data.instagram || '',
+                    message: data.message || '',
+                    website: data.website || ''
                 })
             });
-
-            if (response.ok) {
-                showToast('✅ Talebiniz Alındı!');
-                form.reset();
-            } else { throw new Error('Network error'); }
-        } catch (error) {
-            console.error(error);
-            showToast('❌ Hata oluştu. Lütfen tekrar deneyin.');
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            form.reset();
+            show('Teşekkürler! Talebiniz bize ulaştı, en kısa sürede sizi arayacağız.', 'ok');
+        } catch (err) {
+            show('Gönderilemedi. Lütfen bir süre sonra tekrar deneyin.', 'err');
         } finally {
-            btn.disabled = false;
-            if (loader) loader.classList.add('hidden');
+            button.disabled = false;
         }
     });
-}
-
-/**
- * Toast Notification System
- */
-function showToast(msg) {
-    const notification = document.getElementById('notification');
-    const notifMsg = document.getElementById('notif-msg');
-    if (notification && notifMsg) {
-        notifMsg.innerText = msg;
-        notification.classList.add('show');
-        setTimeout(() => notification.classList.remove('show'), 5000);
-    }
 }
