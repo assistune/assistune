@@ -6,9 +6,8 @@
  * never in this file. See telegram-worker/README.md for setup.
  */
 
-// Set this to your Worker's URL after deploying it, e.g.
-// 'https://assistune-form.<your-subdomain>.workers.dev'
-const FORM_ENDPOINT = '';
+// Cloudflare Worker that forwards the form to Telegram (telegram-worker/worker.js).
+const FORM_ENDPOINT = 'https://assistune-form.arslanardakerem3.workers.dev';
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
