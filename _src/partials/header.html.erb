@@ -1,0 +1,59 @@
+<%-
+  menus = [
+    { id: 'asistan', label: 'Asistan', href: '/asistan/', items: [
+      ['Nasıl çalışır', '/asistan/#nasil', 'Mesaj geldiği an karşılar, bilgi verir, ayırır, devreder.'],
+      ['Hasta ayırma', '/asistan/#ayirma', 'Sıcak hasta, doktor talebi, bilgi alan.'],
+      ['Panel', '/asistan/#panel', 'Tüm konuşmalar tek gelen kutusunda.'],
+      ['Kimler için', '/asistan/#kimler', 'Klinikler, doktorlar, sosyal medya yöneticileri.'],
+      ['SSS', '/asistan/#sss', 'Kanallar, sınırlar, veriler.'],
+      ['Demo al', '/asistan/#demo', 'Kendi hesabınızda görün.'],
+    ] },
+    { id: 'ai', label: 'Yapay Zekada Öne Çıkarma', href: '/yapay-zekada-one-cikarma/', items: [
+      ['Neden önemli', '/yapay-zekada-one-cikarma/#neden', 'Hastalar artık yapay zekâya soruyor.'],
+      ['Ne yapıyoruz', '/yapay-zekada-one-cikarma/#ne-yapiyoruz', 'Analiz, düzenleme, yorum stratejisi, takip.'],
+      ['Rehber yazılar', '/blog/', 'Site, Google profili, yorumlar, tutarlılık.'],
+      ['Ücretsiz analiz', '/yapay-zekada-one-cikarma/#analiz', 'Kliniğinizi yapay zekâ araçlarında test edelim.'],
+    ] },
+    { id: 'ajans', label: 'Ajanslar', href: '/ajanslar/', items: [
+      ['Neden doğru ajans?', '/ajanslar/#neden', 'Yanlış ajansın bedeli.'],
+      ['Nasıl eşleştiriyoruz', '/ajanslar/#surec', 'Dinliyor, eliyor, buluşturuyoruz.'],
+      ['Yeni açılan klinikler', '/ajanslar/#yeni-klinik', 'Doğru temelden başlayın.'],
+      ['Ajans önerisi al', '/ajanslar/#form', 'Size uygun ajansları belirleyelim.'],
+    ] },
+  ]
+  current = page['nav']
+-%>
+<header class="nav" data-nav>
+    <div class="wrap nav-inner">
+        <a href="/" class="brand" aria-label="Assistune ana sayfa">
+            <img src="/logo.svg" alt="Assistune" width="99" height="36">
+        </a>
+        <nav class="menu" id="site-menu" aria-label="Ana menü">
+            <ul class="menu-list">
+<%- menus.each do |m| -%>
+                <li class="menu-item" data-menu>
+                    <div class="menu-row">
+                        <a class="menu-link<%= ' is-current' if current == m[:id] %>" href="<%= m[:href] %>"<%= ' aria-current="page"' if current == m[:id] %>><%= h m[:label] %></a>
+                        <button class="menu-caret" type="button" aria-expanded="false" aria-controls="panel-<%= m[:id] %>" aria-label="<%= h m[:label] %> alt menüsü">
+                            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <div class="menu-panel" id="panel-<%= m[:id] %>">
+                        <ul>
+<%- m[:items].each do |label, href, desc| -%>
+                            <li><a href="<%= href %>"><span class="mp-title"><%= h label %></span><span class="mp-desc"><%= h desc %></span></a></li>
+<%- end -%>
+                        </ul>
+                    </div>
+                </li>
+<%- end -%>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="/baslayalim/" class="btn btn-ink btn-sm nav-cta">Başlayalım <span aria-hidden="true">→</span></a>
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menüyü aç">
+                <span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>

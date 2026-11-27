@@ -1,0 +1,62 @@
+<%-
+  title       = page['title']
+  description = page['description']
+  canonical   = abs(page['path'])
+  og_title    = page['og_title'] || title
+  org = {
+    '@type' => 'Organization',
+    '@id' => abs('/#organization'),
+    'name' => 'Assistune',
+    'url' => abs('/'),
+    'logo' => abs('/Logo.png'),
+    'description' => 'Klinikler ve doktorlar için büyüme ekosistemi: yapay zekâda görünürlük, Instagram mesaj asistanı ve sağlık alanında deneyimli ajanslarla eşleştirme.',
+  }
+-%>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
+<%- if page['legacy_hash_redirect'] -%>
+    <script>
+        // Eski tek sayfalık sitenin bağlantıları (/#demo vb.) artık /asistan/ altında.
+        (function () {
+            var ids = ['nasil', 'ayirma', 'panel', 'kimler', 'kurallar', 'fiyat', 'sss', 'demo'];
+            var h = location.hash.replace('#', '');
+            if (ids.indexOf(h) !== -1) location.replace('/asistan/#' + h);
+        })();
+    </script>
+<%- end -%>
+    <title><%= h title %></title>
+    <meta name="description" content="<%= h description %>">
+    <link rel="canonical" href="<%= canonical %>">
+<%- if page['noindex'] -%>
+    <meta name="robots" content="noindex">
+<%- end -%>
+    <meta property="og:type" content="<%= page['post'] ? 'article' : 'website' %>">
+    <meta property="og:site_name" content="Assistune">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:title" content="<%= h og_title %>">
+    <meta property="og:description" content="<%= h description %>">
+    <meta property="og:url" content="<%= canonical %>">
+    <meta property="og:image" content="<%= abs('/og.png') %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css?v=<%= ASSET_VERSION %>">
+    <%= json_ld({ '@context' => 'https://schema.org', '@graph' => [org] + Array(page['schema']) }) %>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+<%= partial('header') %>
+<main id="main">
+<%= body %>
+</main>
+<%= partial('footer') %>
+<script src="/script.js?v=<%= ASSET_VERSION %>" defer></script>
+</body>
+</html>

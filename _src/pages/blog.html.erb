@@ -1,0 +1,33 @@
+---
+title: "Blog | Klinikler için yapay zekâ görünürlüğü rehberleri | Assistune"
+description: "Web sitesi, Google İşletme profili, hasta yorumları ve tutarlılık: kliniğinizin yapay zekâ cevaplarında yer alması için kısa ve pratik rehberler."
+path: "/blog/"
+nav: ai
+og_title: "Assistune Blog: Klinikler için yapay zekâ görünürlüğü rehberleri"
+---
+        <section class="hero page-hero page-hero-sm">
+            <div class="wrap">
+                <p class="eyebrow"><span class="dot dot-lime"></span> Rehber yazılar</p>
+                <h1>Yapay zekâ sizi nasıl <span class="serif">tanır?</span></h1>
+                <p class="lead">Site, Google profili, yorumlar, tutarlılık. Kısa, pratik ve mobilde rahat okunan rehberler.</p>
+            </div>
+        </section>
+        <section class="section section-tight">
+            <div class="wrap">
+                <div class="post-cards post-cards-2">
+<%- site[:posts].each do |p| -%>
+                    <a class="post-card reveal" href="<%= p['path'] %>">
+                        <span class="post-card-meta"><%= h p['readingTime'] %> okuma</span>
+                        <h2><%= h p['title'] %></h2>
+                        <p><%= h p['description'] %></p>
+                        <span class="card-more">Okuyun <span aria-hidden="true">→</span></span>
+                    </a>
+<%- end -%>
+                </div>
+                <div class="post-cta post-cta-wide reveal">
+                    <p class="post-cta-title">Kliniğiniz yapay zekâda görünüyor mu?</p>
+                    <p>Ücretsiz analizle bugünkü durumunuzu öğrenin.</p>
+                    <a href="/yapay-zekada-one-cikarma/#analiz" class="btn btn-lime">Ücretsiz analiz isteyin <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
+        </section>

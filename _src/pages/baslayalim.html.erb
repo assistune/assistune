@@ -1,0 +1,36 @@
+---
+title: "Başlayalım | Assistune"
+description: "Asistan, yapay zekâda görünürlük ya da ajans eşleştirme. Nereden başlayacağınızı seçin, kısa formu doldurun, size en uygun yolu birlikte belirleyelim."
+path: "/baslayalim/"
+og_title: "Nereden başlamak istersiniz? | Assistune"
+---
+<%-
+  picker = <<~HTML
+    <fieldset class="picker span-2" data-service-picker>
+        <legend class="sr-only">Hangi konuda destek istiyorsunuz?</legend>
+        <label class="pick"><input type="radio" name="service" value="Asistan" data-key="asistan" required><span class="pick-body"><span class="pick-q">Instagram mesajlarıma yetişemiyorum</span><span class="pick-a">Asistan</span></span></label>
+        <label class="pick"><input type="radio" name="service" value="AI görünürlük" data-key="ai"><span class="pick-body"><span class="pick-q">Yapay zekâda görünür olmak istiyorum</span><span class="pick-a">AI görünürlük</span></span></label>
+        <label class="pick"><input type="radio" name="service" value="Ajans" data-key="ajans"><span class="pick-body"><span class="pick-q">Doğru ajansı bulmak istiyorum</span><span class="pick-a">Ajans</span></span></label>
+        <label class="pick"><input type="radio" name="service" value="Genel (emin değil)" data-key="genel"><span class="pick-body"><span class="pick-q">Emin değilim</span><span class="pick-a">Genel</span></span></label>
+    </fieldset>
+  HTML
+-%>
+        <section class="section start">
+            <div class="wrap start-wrap">
+                <div class="start-head">
+                    <h1>Nereden başlamak <span class="serif">istersiniz?</span></h1>
+                    <p class="lead">Hangisi olduğundan emin değilseniz “Emin değilim” seçin, birlikte karar verelim.</p>
+                </div>
+<%= partial('lead_form',
+      type: 'baslayalim', id: 'baslayalim-form', extra_class: 'form-start',
+      before_fields: picker,
+      submit: 'Gönder',
+      success: 'Talebiniz bize ulaştı. En kısa sürede sizi arayıp birlikte en uygun yolu belirleyeceğiz.',
+      consent: 'Bilgilerimin yalnızca talebimle ilgili iletişim için kullanılmasını kabul ediyorum.',
+      fields: [
+        f_name, f_phone,
+        f_org('Klinik adı'), f_city,
+        f_message('Kısaca anlatın'),
+      ]) %>
+            </div>
+        </section>

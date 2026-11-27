@@ -1,0 +1,41 @@
+        <article class="post">
+            <header class="post-head wrap-narrow">
+                <nav class="crumbs" aria-label="Konum"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> Rehber</nav>
+                <h1><%= h post['title'] %></h1>
+                <p class="post-desc"><%= h post['description'] %></p>
+                <p class="post-meta"><time datetime="<%= post['date'] %>"><%= tr_date(post['date']) %></time> · <%= h post['readingTime'] %> okuma · Assistune</p>
+            </header>
+<%- if post['toc'].length > 1 -%>
+            <nav class="toc wrap-narrow" aria-label="İçindekiler">
+                <p class="toc-title">İçindekiler</p>
+                <ol>
+<%- post['toc'].each do |t| -%>
+                    <li><a href="#<%= t[:id] %>"><%= h t[:text] %></a></li>
+<%- end -%>
+                </ol>
+            </nav>
+<%- end -%>
+            <div class="prose wrap-narrow">
+<%= post['html'] %>
+            </div>
+            <aside class="post-cta wrap-narrow" aria-label="Ücretsiz analiz">
+                <p class="post-cta-title">Kliniğiniz yapay zekâda görünüyor mu?</p>
+                <p>Ücretsiz analizle bugünkü durumunuzu öğrenin.</p>
+                <a href="/yapay-zekada-one-cikarma/#analiz" class="btn btn-lime">Ücretsiz analiz isteyin <span aria-hidden="true">→</span></a>
+            </aside>
+        </article>
+
+        <section class="related" aria-labelledby="ilgili">
+            <div class="wrap">
+                <h2 id="ilgili" class="related-title">İlgili yazılar</h2>
+                <div class="post-cards">
+<%- related.each do |p| -%>
+                    <a class="post-card" href="<%= p['path'] %>">
+                        <span class="post-card-meta"><%= h p['readingTime'] %> okuma</span>
+                        <h3><%= h p['title'] %></h3>
+                        <p><%= h p['description'] %></p>
+                    </a>
+<%- end -%>
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,55 @@
+<%-
+  # locals: type, id, fields, submit, success, consent, (optional) extra_class, before_fields
+-%>
+<form class="form form-grid<%= ' ' + extra_class if defined?(extra_class) && extra_class %>" id="<%= id %>" data-lead-form data-form-type="<%= type %>" data-success="<%= h success %>" novalidate>
+<%- if defined?(before_fields) && before_fields -%>
+<%= before_fields %>
+<%- end -%>
+<%- fields.each do |f|
+      req  = f[:required]
+      span = f[:full] ? ' span-2' : ''
+      opt  = req ? '' : ' <em>(isteğe bağlı)</em>'
+-%>
+<%- case f[:type]
+    when 'select' -%>
+    <label class="field<%= span %>">
+        <span><%= h f[:label] %><%= opt %></span>
+        <select name="<%= f[:name] %>"<%= ' required' if req %>>
+            <option value="" disabled selected>Seçin</option>
+<%- f[:options].each do |o| -%>
+            <option value="<%= h o %>"><%= h o %></option>
+<%- end -%>
+        </select>
+    </label>
+<%- when 'radio' -%>
+    <fieldset class="field field-radio<%= span %>">
+        <legend><%= h f[:label] %><%= opt %></legend>
+        <div class="radio-row">
+<%- f[:options].each do |o| -%>
+            <label class="radio-pill"><input type="radio" name="<%= f[:name] %>" value="<%= h o %>"<%= ' required' if req %>><span><%= h o %></span></label>
+<%- end -%>
+        </div>
+    </fieldset>
+<%- when 'textarea' -%>
+    <label class="field span-2">
+        <span><%= h f[:label] %><%= opt %></span>
+        <textarea name="<%= f[:name] %>" rows="3" maxlength="1000"<%= %( placeholder="#{h f[:placeholder]}") if f[:placeholder] %><%= ' required' if req %>></textarea>
+    </label>
+<%- else -%>
+    <label class="field<%= span %>">
+        <span><%= h f[:label] %><%= opt %></span>
+        <input type="<%= f[:type] || 'text' %>" name="<%= f[:name] %>" maxlength="<%= f[:max] || 120 %>"<%= %( autocomplete="#{f[:autocomplete]}") if f[:autocomplete] %><%= %( inputmode="#{f[:inputmode]}") if f[:inputmode] %><%= %( placeholder="#{h f[:placeholder]}") if f[:placeholder] %><%= ' required' if req %>>
+    </label>
+<%- end -%>
+<%- end -%>
+    <label class="hp" aria-hidden="true">
+        Bu alanı boş bırakın
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </label>
+    <label class="consent span-2">
+        <input type="checkbox" name="consent" required>
+        <span><%= consent %> <a href="/kvkk/">Aydınlatma metni</a></span>
+    </label>
+    <button type="submit" class="btn btn-ink btn-block span-2"><span class="btn-label"><%= h submit %></span></button>
+    <p class="form-status span-2" role="status" aria-live="polite"></p>
+</form>

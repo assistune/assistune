@@ -1,6 +1,6 @@
-# Demo formu → Telegram
+# Formlar → Telegram
 
-Sitedeki demo formu doğrudan Telegram'a değil, bu küçük Cloudflare Worker'a gönderilir. Worker talebi Telegram grubunuza iletir. Böylece Telegram bot anahtarı sitenin kodunda görünmez.
+Sitedeki tüm formlar (Asistan demo, AI görünürlük analizi, ajans eşleştirme, Başlayalım) doğrudan Telegram'a değil, bu küçük Cloudflare Worker'a gönderilir. Worker talebi Telegram grubunuza iletir. Böylece Telegram bot anahtarı sitenin kodunda görünmez.
 
 Kurulum yaklaşık 15 dakika sürer. Hepsi ücretsiz.
 
@@ -30,17 +30,31 @@ Kurulum yaklaşık 15 dakika sürer. Hepsi ücretsiz.
 
 ## 4. Siteye bağlayın
 
-`script.js` dosyasının başındaki satırı Worker adresinizle doldurun:
+`script.js` dosyasının başındaki satır Worker adresini içerir:
 
 ```js
 const FORM_ENDPOINT = 'https://assistune-form.ADINIZ.workers.dev';
 ```
 
-Değişikliği GitHub'a yükleyin. Site güncellendikten sonra formu bir kez deneyin. Mesaj birkaç saniye içinde Telegram grubuna düşmelidir.
+## Worker kodunu güncellemek
+
+`worker.js` değiştiğinde (ör. yeni form eklendiğinde) Cloudflare panelinde **Workers & Pages → assistune-form → Edit code** yolunu izleyin, içeriği bu dosyanın tamamıyla değiştirin ve **Deploy**'a basın. Secrets aynı kalır.
+
+Her form bir `form_type` gönderir, Telegram mesajının başlığı buna göre değişir:
+
+| form_type | Telegram başlığı |
+|---|---|
+| `asistan_demo` | 🤖 Yeni Asistan demo talebi |
+| `ai_analiz` | 🔍 Yeni AI görünürlük analizi talebi |
+| `ajans` | 🤝 Yeni ajans eşleştirme talebi |
+| `baslayalim` | 🚀 Yeni "Başlayalım" talebi — Seçim: X |
+
+`form_type` göndermeyen eski sayfalar Asistan demo talebi olarak işlenir. Worker her adreste çalışır, yani hem kök adres hem `/api/lead` kabul edilir.
 
 ## Güvenlik notları
 
-- Worker yalnızca `assistune.com` ve `www.assistune.com` adreslerinden gelen istekleri kabul eder.
+- Worker yalnızca `assistune.com`, `www.assistune.com` ve yerel önizleme (`localhost:8765`) adreslerinden gelen istekleri kabul eder.
 - Formda botları eleyen gizli bir alan var. Bu alanı dolduran istekler Telegram'a iletilmez.
-- Spam gelirse Cloudflare'de Worker için **Rate limiting** kuralı eklenebilir.
+- Zorunlu alanlar ve telefon numarası sunucu tarafında da kontrol edilir. Kullanıcı girdisi Telegram'a gönderilmeden önce HTML olarak kaçışlanır.
+- IP başına dakikada 4 istek sınırı var (Worker örneği başına, yaklaşık). Kesin sınır için Cloudflare'de **Rate limiting** kuralı da eklenebilir.
 - Form ad ve telefon gibi kişisel veriler topluyor. Telegram'ın sunucuları yurt dışındadır. KVKK aydınlatma metninde bu aktarımın belirtilmesi gerekir (hukukçuya danışın).

@@ -1,0 +1,24 @@
+# Assistune
+
+> Assistune, Türkiye'deki klinikler ve doktorlar için bir büyüme ekosistemidir: kliniklerin yapay zekâ cevaplarında doğru ve tutarlı bilgiyle bulunmasını sağlar, Instagram mesajlarına ilk dakikada yanıt veren bir asistan sunar ve klinikleri sağlık mevzuatına hakim sosyal medya ajanslarıyla eşleştirir.
+
+Assistune teşhis koymaz, tıbbi tavsiye vermez ve garanti/sonuç vaadinde bulunmaz. Hizmetler sağlık hizmetlerinde tanıtım kuralları dikkate alınarak tasarlanır. Site dili Türkçedir.
+
+## Hizmetler
+
+- [Yapay Zekada Öne Çıkarma](https://assistune.com/yapay-zekada-one-cikarma/): Kliniğin web sitesi, Google İşletme profili, hasta yorumları ve sosyal medya bilgilerini doğru ve tutarlı hâle getirir; ChatGPT, Gemini, Perplexity ve Google AI cevaplarındaki görünürlüğü aylık raporla takip eder. Ücretsiz görünürlük analizi sunulur.
+- [Assistune Asistan](https://assistune.com/asistan/): Doktor ve kliniklerin Instagram Direct mesajlarına yapay zekâ destekli ilk yanıtı verir, yalnızca klinik onaylı bilgileri kullanır, hastaları "Sıcak hasta", "Doktor talebi" ve "Bilgi alıyor" olarak ayırır ve hazır hastayı sekretere devreder. Teşhis koymaz, kendiliğinden fiyat söylemez.
+- [Ajans eşleştirme](https://assistune.com/ajanslar/): Klinik, hastane ve sağlık turizmi kurumlarını sağlık mevzuatına hakim, sağlık alanında deneyimli sosyal medya ve reklam ajanslarıyla buluşturur. Karar her zaman kurumundur.
+
+## Sayfalar
+
+- [Ana sayfa](https://assistune.com/)
+- [Başlayalım](https://assistune.com/baslayalim/): Hangi hizmetle başlanacağını seçmek için genel başvuru formu.
+- [Blog](https://assistune.com/blog/)
+- [KVKK aydınlatma metni](https://assistune.com/kvkk/)
+
+## Rehber yazılar
+
+<%- site[:posts].each do |p| -%>
+- [<%= p['title'] %>](<%= abs(p['path']) %>): <%= p['description'] %>
+<%- end -%>

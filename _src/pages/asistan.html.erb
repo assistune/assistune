@@ -1,0 +1,361 @@
+---
+title: "Assistune Asistan | Instagram mesajlarınıza ilk yanıt, sıcak hastalar sekreterinize"
+description: "Assistune Asistan, doktor ve kliniklerin Instagram DM'lerine gelen ilk mesajları yapay zekâ ile karşılar, hastayı ayırır ve randevuya hazır olanları sekretere devreder."
+path: "/asistan/"
+nav: asistan
+og_title: "Assistune Asistan: Kliniğinize gelen her mesaja ilk dakikada cevap"
+---
+<%-
+  faq = [
+    ['Hangi kanallarda çalışıyor?', 'Şu an Instagram Direct mesajlarında çalışıyor. WhatsApp desteği sonraki aşamada planlanıyor.'],
+    ['Bot hastaya fiyat söyler mi?', 'Hayır, kendiliğinden fiyat, indirim ya da kampanya bilgisi vermez. Fiyat soruları varsayılan olarak ekibinize bırakılır.'],
+    ['Hasta tıbbi bir soru sorarsa ne olur?', 'Bot teşhis koymaz ve tavsiye vermez. Tıbbi değerlendirme gerektiren sorular panelde “doktor talebi” olarak işaretlenir. Doktor müsait olduğunda sadece bunlara bakar. Bilgi kartında olmayan diğer sorular ekibinize bırakılır.'],
+    ['Sekreterim konuşmaya girerse bot ne yapar?', 'Konuşmayı ekibiniz devraldığında bot o hastaya yanıt vermeyi bırakır. Panelden konuşmayı istediğiniz zaman bota geri verebilir ya da botu tüm klinik için kapatabilirsiniz.'],
+    ['Bot hangi bilgileri kullanıyor?', 'Yalnızca sizin hazırladığınız ve onayladığınız bilgi kartlarını: konum, çalışma saatleri, randevu süreci ve tedavi bilgileri.'],
+    ['Verilerimiz nerede tutuluyor?', "Konuşmalar ve lead bilgileri Türkiye'deki sunucularda saklanır."],
+  ]
+-%>
+<%= json_ld({ '@context' => 'https://schema.org', '@graph' => [
+  { '@type' => 'Service', 'name' => 'Assistune Asistan', 'serviceType' => 'Instagram mesajları için yapay zekâ destekli ilk yanıt asistanı', 'provider' => { '@id' => abs('/#organization') }, 'areaServed' => 'TR', 'audience' => { '@type' => 'Audience', 'audienceType' => 'Doktorlar, klinikler ve sağlık alanındaki sosyal medya yöneticileri' }, 'url' => abs('/asistan/') },
+  faq_schema(faq),
+] }) %>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span class="dot dot-lime"></span> Doktor ve klinikler için Instagram asistanı</p>
+                    <h1>
+                        <span class="line serif">Kliniğinize gelen</span>
+                        <span class="line">her mesaja ilk&nbsp;dakikada</span>
+                        <span class="inverse">cevap.</span>
+                    </h1>
+                    <p class="lead">
+                        Assistune, kliniğinize Instagram'dan yazan her hastaya anında cevap veren yapay zekâ asistanıdır. Hastayı karşılar, kimin gerçekten <span class="mark">randevu istediğini</span> ayırır ve sadece sizin bakmanız gerekeni size getirir.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#demo" class="btn btn-ink">Demo talep edin</a>
+                        <a href="#nasil" class="btn btn-ghost">Nasıl çalışır?</a>
+                    </div>
+                    <p class="hero-note">Bot satışı kapatmaz. Satışı ekibiniz yapar, bot zamanınızı korur.</p>
+                </div>
+
+                <div class="hero-visual" aria-label="Örnek bir Instagram konuşması">
+                    <div class="dm">
+                        <div class="dm-head">
+                            <div class="avatar" aria-hidden="true">K</div>
+                            <div>
+                                <div class="dm-name">Klinik hesabınız</div>
+                                <div class="dm-sub">Instagram · Direct</div>
+                            </div>
+                        </div>
+                        <div class="dm-body">
+                            <div class="msg msg-in">Merhaba, implant için bilgi alabilir miyim? Almanya'dan geleceğim.</div>
+                            <div class="msg msg-out">
+                                <span class="msg-tag">AI asistan</span>
+                                Merhaba! Ben kliniğin yapay zekâ asistanıyım. İmplant süreci hakkında bilgi verebilirim. Ne zaman gelmeyi düşünüyorsunuz?
+                            </div>
+                            <div class="msg msg-in">1 ay içinde. Akşam arayabilir misiniz? +49 ··· ··· 42</div>
+                            <div class="msg msg-out">
+                                <span class="msg-tag">AI asistan</span>
+                                Tabii. Numaranızı ekibimize iletiyorum, sizi akşam saatlerinde arayacaklar.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="handoff">
+                        <div class="handoff-top">
+                            <span class="handoff-label">Sekretere devredildi</span>
+                            <span class="tag tag-hot">Sıcak hasta</span>
+                        </div>
+                        <p class="handoff-summary">Almanya · diş implantı · 1 ay içinde · akşam aranmak istiyor</p>
+                        <div class="chips">
+                            <span class="chip">Telefon verdi</span>
+                            <span class="chip">Aranmak istedi</span>
+                            <span class="chip">1 ay içinde</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM -->
+        <section class="band">
+            <div class="wrap problem-grid">
+                <div class="problem-item">
+                    <div class="problem-num">50+</div>
+                    <p>Reklamlı tek bir videoya gelebilecek mesaj sayısı.</p>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-num">4 <span class="serif">soru</span></div>
+                    <p>Mesajların çoğu aynı: konum, çalışma saatleri, tedavi bilgisi, randevu nasıl alınır.</p>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-num">0 <span class="serif">dk</span></div>
+                    <p>Doktorun bu mesajlara ayırabildiği zaman. Yük sekretere ya da sosyal medya yöneticisine kalıyor.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW -->
+        <section class="section" id="nasil">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">Nasıl çalışır</p>
+                    <h2>İlk teması bot yapar, satışı <span class="serif">ekibiniz</span> kapatır.</h2>
+                </div>
+                <ol class="steps">
+                    <li class="step">
+                        <span class="step-no">01</span>
+                        <h3>Karşılar</h3>
+                        <p>Hasta yazdığı anda yanıt alır. Bot, konuşmanın yapay zekâ destekli olduğunu en baştan söyler.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-no">02</span>
+                        <h3>Bilgi verir</h3>
+                        <p>Konum, saatler, randevu süreci ve tedaviler hakkında yalnızca sizin onayladığınız bilgi kartlarındaki bilgiyi kullanır.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-no">03</span>
+                        <h3>Ayırır</h3>
+                        <p>Telefon paylaştı mı, randevu sordu mu, ne zaman gelmek istiyor? Kimin gerçekten randevu istediğini, kimin sadece bilgi aldığını ayırır.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-no">04</span>
+                        <h3>Devreder</h3>
+                        <p>Hazır olan hastayı tek satırlık bir özetle sekreterinize iletir. Konuşmayı ekibiniz devralınca bot susar.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- TEMPERATURE -->
+        <section class="section section-alt" id="ayirma">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">Hasta ayırma</p>
+                    <h2>Kimin önce aranacağını tahmin etmeyin, <span class="serif">görün.</span></h2>
+                    <p class="section-lead">Her konuşma üç gruptan birine düşer. Nedeni de yanında yazar: telefon verdi mi, randevu sordu mu, ne zaman gelmek istiyor? Sekreteriniz kimle uğraşacağını bilir, siz de sadece size gelen soruya bakarsınız.</p>
+                </div>
+                <div class="sorts">
+                    <article class="sort-card">
+                        <div class="sort-card-head"><span class="tag tag-hot">Sıcak hasta</span></div>
+                        <h3>Sekretere hemen iletilir</h3>
+                        <p class="reason">“Telefon verdi, 1 ay içinde gelmek istiyor, randevu sordu.”</p>
+                    </article>
+                    <article class="sort-card">
+                        <div class="sort-card-head"><span class="tag tag-doctor">Doktor talebi</span></div>
+                        <h3>Size gelir, müsait olunca bakarsınız</h3>
+                        <p class="reason">“Tedavimden sonra şu belirti normal mi?”</p>
+                    </article>
+                    <article class="sort-card">
+                        <div class="sort-card-head"><span class="tag tag-info">Bilgi alıyor</span></div>
+                        <h3>Takip listesine girer</h3>
+                        <p class="reason">“Sadece bilgi alıyorum, ileride düşüneceğim.”</p>
+                    </article>
+                </div>
+                <p class="fine">Sekreteriniz sonuçları işaretledikçe (randevu aldı, geldi, gelmedi, ulaşılamadı) hangi içeriğin gerçekten hasta getirdiğini görürsünüz.</p>
+            </div>
+        </section>
+
+        <!-- PANEL -->
+        <section class="section" id="panel">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">Panel</p>
+                    <h2>Ekibiniz için <span class="mark">tek bir</span> gelen kutusu.</h2>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Tüm konuşmalar tek yerde</h3>
+                        <p>Botun yanıtları ve ekibinizin Instagram'dan yazdıkları aynı konuşma geçmişinde görünür.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Devral ve geri ver</h3>
+                        <p>Tek tıkla konuşmayı devralın ya da bota geri verin. İsterseniz botu tüm klinik için kapatın.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>24 saat sayacı</h3>
+                        <p>Instagram, hastanın son mesajından sonraki 24 saat içinde serbest yanıta izin verir. Panel kalan süreyi gösterir.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Sonuç işaretleme</h3>
+                        <p>Randevu aldı, geldi, gelmedi, ulaşılamadı. Hangi içeriğin gerçekten hasta getirdiğini görün.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Doktor onaylı bilgi kartları</h3>
+                        <p>Konum, saatler, randevu süreci ve tedavi bilgileri. Bot yalnızca bu kartlardaki bilgiyle yanıt verir.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Birden çok klinik, tek hesap</h3>
+                        <p>Birden çok doktoru yöneten sosyal medya yöneticileri tüm hesapları aynı panelden takip eder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO -->
+        <section class="section section-alt" id="kimler">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">Kimler için</p>
+                    <h2>Sosyal medyadan hasta kazanan ekipler için.</h2>
+                </div>
+                <div class="who">
+                    <article class="who-card">
+                        <h3>Doktorlar ve klinikler</h3>
+                        <p>Kişisel markası sosyal medyada büyüyen doktorlar ve yurt dışından hasta kabul eden sağlık turizmi klinikleri. Mesajlar yanıtsız kalmaz, sekreteriniz yalnızca hazır hastayla ilgilenir.</p>
+                    </article>
+                    <article class="who-card">
+                        <h3>Sosyal medya yöneticileri ve ajanslar</h3>
+                        <p>Birden çok doktorun hesabını yönetiyorsanız, ürettiğiniz videoların kaç hasta getirdiğini gösterin. Tüm müşterileriniz tek panelde.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- RULES -->
+        <section class="section" id="kurallar">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="kicker">Botun sınırları</p>
+                    <h2>Ne söyleyeceği kadar, ne <span class="serif">söylemeyeceği</span> de belli.</h2>
+                    <p class="section-lead">Kurallar, sağlık hizmetlerinde tanıtım yönetmeliği ve KVKK göz önünde bulundurularak sabitlenir. Klinik bazında esnetilmez.</p>
+                </div>
+                <div class="rules">
+                    <div class="rule-col">
+                        <h3 class="rule-title rule-yes">Bot yapar</h3>
+                        <ul>
+                            <li>Yapay zekâ destekli olduğunu belirtir</li>
+                            <li>Konum, çalışma saatleri ve randevu süreci hakkında bilgi verir</li>
+                            <li>Tedaviler hakkında yalnızca doktor onaylı karttaki bilgiyi paylaşır</li>
+                            <li>Tıbbi değerlendirme gereken soruyu “Bunu doktorumuz değerlendirir” diyerek doktor talebi olarak işaretler</li>
+                        </ul>
+                    </div>
+                    <div class="rule-col">
+                        <h3 class="rule-title rule-no">Bot yapmaz</h3>
+                        <ul>
+                            <li>Teşhis koymaz, tıbbi tavsiye vermez</li>
+                            <li>Kendiliğinden fiyat, indirim ya da kampanya söylemez</li>
+                            <li>Satışı kapatmaz, randevuyu ekibiniz verir</li>
+                            <li>Klinik konusu dışında sohbet etmez</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="fine">Verileriniz Türkiye'deki sunucularda tutulur.</p>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section class="section section-ink" id="fiyat">
+            <div class="wrap price">
+                <div>
+                    <p class="kicker kicker-light">Fiyatlandırma</p>
+                    <h2>Kliniğinize özel <span class="serif">teklif.</span></h2>
+                    <p class="section-lead">Fiyat, gelen mesaj hacmine ve bağlanacak hesap sayısına göre belirlenir. Kurulumu ve bilgi kartlarının hazırlanmasını birlikte yaparız.</p>
+                </div>
+                <a href="#demo" class="btn btn-lime">Teklif alın</a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="sss">
+            <div class="wrap faq-wrap">
+                <div class="section-head">
+                    <p class="kicker">Sık sorulan sorular</p>
+                    <h2>Merak edilenler.</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>Hangi kanallarda çalışıyor?</summary>
+                        <p>Şu an Instagram Direct mesajlarında çalışıyor. WhatsApp desteği sonraki aşamada planlanıyor.</p>
+                    </details>
+                    <details>
+                        <summary>Bot hastaya fiyat söyler mi?</summary>
+                        <p>Hayır, kendiliğinden fiyat, indirim ya da kampanya bilgisi vermez. Fiyat soruları varsayılan olarak ekibinize bırakılır.</p>
+                    </details>
+                    <details>
+                        <summary>Hasta tıbbi bir soru sorarsa ne olur?</summary>
+                        <p>Bot teşhis koymaz ve tavsiye vermez. Tıbbi değerlendirme gerektiren sorular panelde “doktor talebi” olarak işaretlenir. Doktor müsait olduğunda sadece bunlara bakar. Bilgi kartında olmayan diğer sorular ekibinize bırakılır.</p>
+                    </details>
+                    <details>
+                        <summary>Sekreterim konuşmaya girerse bot ne yapar?</summary>
+                        <p>Konuşmayı ekibiniz devraldığında bot o hastaya yanıt vermeyi bırakır. Panelden konuşmayı istediğiniz zaman bota geri verebilir ya da botu tüm klinik için kapatabilirsiniz.</p>
+                    </details>
+                    <details>
+                        <summary>Bot hangi bilgileri kullanıyor?</summary>
+                        <p>Yalnızca sizin hazırladığınız ve onayladığınız bilgi kartlarını: konum, çalışma saatleri, randevu süreci ve tedavi bilgileri.</p>
+                    </details>
+                    <details>
+                        <summary>Verilerimiz nerede tutuluyor?</summary>
+                        <p>Konuşmalar ve lead bilgileri Türkiye'deki sunucularda saklanır.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO FORM -->
+        <section class="section section-alt" id="demo">
+            <div class="wrap demo">
+                <div class="demo-copy">
+                    <p class="kicker">Demo</p>
+                    <h2>Kendi hesabınızda <span class="serif">görmek</span> ister misiniz?</h2>
+                    <p class="section-lead">Bilgilerinizi bırakın, sizi arayalım. Kliniğinize ya da yönettiğiniz hesaplara nasıl uyacağını birlikte konuşalım.</p>
+                </div>
+
+                <form class="form" id="demo-form" data-lead-form data-form-type="asistan_demo" data-success="Teşekkürler! Talebiniz bize ulaştı, en kısa sürede sizi arayacağız." novalidate>
+                    <div class="field-row">
+                        <label class="field">
+                            <span>Ad soyad</span>
+                            <input type="text" name="name" autocomplete="name" required maxlength="100">
+                        </label>
+                        <label class="field">
+                            <span>Telefon</span>
+                            <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="30" placeholder="05xx xxx xx xx">
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label class="field">
+                            <span>Klinik ya da ajans adı</span>
+                            <input type="text" name="organization" autocomplete="organization" maxlength="120">
+                        </label>
+                        <label class="field">
+                            <span>Rolünüz</span>
+                            <select name="role">
+                                <option value="Doktor">Doktor</option>
+                                <option value="Klinik yöneticisi">Klinik yöneticisi</option>
+                                <option value="Sosyal medya yöneticisi / ajans">Sosyal medya yöneticisi / ajans</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="field">
+                        <span>Instagram hesabı <em>(isteğe bağlı)</em></span>
+                        <input type="text" name="instagram" maxlength="60" placeholder="@hesapadi">
+                    </label>
+                    <label class="field">
+                        <span>Kısaca anlatın <em>(isteğe bağlı)</em></span>
+                        <textarea name="message" rows="3" maxlength="1000" placeholder="Örn: 3 doktorun hesabını yönetiyorum, reklamlardan çok mesaj geliyor."></textarea>
+                    </label>
+                    <label class="hp" aria-hidden="true">
+                        Bu alanı boş bırakın
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+                    <label class="consent">
+                        <input type="checkbox" name="consent" required>
+                        <span>Bilgilerimin yalnızca demo görüşmesi için benimle iletişime geçilmesi amacıyla kullanılmasını kabul ediyorum. <a href="/kvkk/">Aydınlatma metni</a></span>
+                    </label>
+                    <button type="submit" class="btn btn-ink btn-block" id="demo-submit"><span class="btn-label">Demo talebini gönder</span></button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- CROSS-SELL -->
+        <section class="cross">
+            <div class="wrap">
+                <a class="cross-card" href="/yapay-zekada-one-cikarma/#analiz">
+                    <span class="cross-kicker">Hastalar sizi önce bulmalı</span>
+                    <span class="cross-title">Yapay zekâda görünürlüğünüzü ücretsiz test edin <span aria-hidden="true">→</span></span>
+                </a>
+            </div>
+        </section>

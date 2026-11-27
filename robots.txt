@@ -1,0 +1,5 @@
+# Arama motorları ve yapay zekâ tarayıcıları dahil herkese açık.
+User-agent: *
+Allow: /
+
+Sitemap: https://assistune.com/sitemap.xml
